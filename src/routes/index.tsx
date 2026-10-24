@@ -40,7 +40,7 @@ function Viewer({ kind }: { kind: ProductKey }) {
 
 function Index() {
   const [active, setActive] = useState(0);
-  const p = PRODUCTS[active];
+  const p = PRODUCTS[active] ?? PRODUCTS[0]!;
 
   return (
     <div className="min-h-screen overflow-x-hidden">
