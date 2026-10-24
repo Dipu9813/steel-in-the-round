@@ -85,7 +85,7 @@ function Index() {
               ))}
             </div>
           </div>
-          <div className="relative h-[420px] lg:h-[560px]">
+          <div className="relative h-[420px] overflow-hidden rounded-2xl border border-border bg-card lg:h-[560px]">
             <Viewer kind="ibeam" />
             <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-xs uppercase tracking-widest text-muted-foreground">Drag to rotate</span>
           </div>
@@ -116,8 +116,7 @@ function Index() {
             ))}
           </div>
 
-          <div className="relative h-[460px] overflow-hidden rounded-2xl border border-border bg-card grid-lines lg:h-[560px]">
-            <div className="absolute inset-0 stage" />
+          <div className="relative h-[460px] overflow-hidden rounded-2xl border border-border bg-card lg:h-[560px]">
             <Viewer key={p.key} kind={p.key} />
             <div className="pointer-events-none absolute left-5 top-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Model / {p.name}</div>
           </div>

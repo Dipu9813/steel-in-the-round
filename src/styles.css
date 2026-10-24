@@ -37,29 +37,29 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.16 0.008 250);
-  --foreground: oklch(0.95 0.005 250);
-  --card: oklch(0.2 0.01 250);
-  --card-foreground: oklch(0.95 0.005 250);
-  --popover: oklch(0.2 0.01 250);
-  --popover-foreground: oklch(0.95 0.005 250);
-  --primary: oklch(0.7 0.19 45);
-  --primary-foreground: oklch(0.15 0.01 250);
-  --secondary: oklch(0.25 0.01 250);
-  --secondary-foreground: oklch(0.95 0.005 250);
-  --muted: oklch(0.24 0.01 250);
-  --muted-foreground: oklch(0.68 0.01 250);
-  --accent: oklch(0.28 0.012 250);
-  --accent-foreground: oklch(0.95 0.005 250);
-  --destructive: oklch(0.6 0.22 27);
+  --background: oklch(0.985 0.003 250);
+  --foreground: oklch(0.24 0.014 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.014 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.014 250);
+  --primary: oklch(0.6 0.19 42);
+  --primary-foreground: oklch(0.99 0.002 250);
+  --secondary: oklch(0.955 0.006 250);
+  --secondary-foreground: oklch(0.28 0.014 250);
+  --muted: oklch(0.955 0.006 250);
+  --muted-foreground: oklch(0.5 0.014 250);
+  --accent: oklch(0.945 0.008 250);
+  --accent-foreground: oklch(0.24 0.014 250);
+  --destructive: oklch(0.58 0.21 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.7 0.19 45);
-  --steel: oklch(0.8 0.01 250);
-  --gradient-molten: linear-gradient(120deg, oklch(0.72 0.2 50), oklch(0.62 0.22 30));
-  --gradient-steel: linear-gradient(180deg, oklch(0.97 0.003 250), oklch(0.62 0.012 250));
-  --glow: 0 0 80px -10px oklch(0.7 0.19 45 / 55%);
+  --border: oklch(0.28 0.014 250 / 14%);
+  --input: oklch(0.28 0.014 250 / 22%);
+  --ring: oklch(0.6 0.19 42);
+  --steel: oklch(0.55 0.012 250);
+  --gradient-molten: linear-gradient(120deg, oklch(0.66 0.2 48), oklch(0.55 0.21 28));
+  --gradient-steel: linear-gradient(180deg, oklch(0.28 0.016 250), oklch(0.55 0.02 250));
+  --glow: 0 18px 60px -22px oklch(0.6 0.19 45 / 45%);
 }
 
 @layer base {
@@ -93,5 +93,5 @@
   background-size: 64px 64px;
 }
 @utility stage {
-  background: radial-gradient(ellipse at 50% 40%, oklch(0.3 0.03 50 / 60%), transparent 65%);
+  background: radial-gradient(ellipse at 50% 40%, oklch(0.66 0.19 45 / 12%), transparent 65%);
 }
