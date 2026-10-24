@@ -63,7 +63,7 @@ function Product({ kind, autoRotate }: { kind: ProductKey; autoRotate: boolean }
   const ref = useRef<THREE.Group>(null);
   const geo = useGeometry(kind);
   const material = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: "#b9c0c8", metalness: 1, roughness: kind === "sheet" ? 0.35 : 0.28 }),
+    () => new THREE.MeshStandardMaterial({ color: "#9aa3ad", metalness: 1, roughness: kind === "sheet" ? 0.35 : 0.28 }),
     [kind],
   );
   useFrame((_, d) => { if (ref.current && autoRotate) ref.current.rotation.y += Math.min(d, 0.05) * 0.4; });
@@ -79,16 +79,19 @@ function Product({ kind, autoRotate }: { kind: ProductKey; autoRotate: boolean }
 export default function SteelViewer({ kind, autoRotate = true }: { kind: ProductKey; autoRotate?: boolean }) {
   return (
     <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 1.2, 7.5], fov: 40 }}>
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[5, 6, 4]} intensity={2} castShadow />
-      <pointLight position={[-4, -1, 3]} intensity={30} color="#ff7a1a" />
+      <color attach="background" args={["#ffffff"]} />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 6, 4]} intensity={1.7} castShadow />
+      <pointLight position={[-4, -1, 3]} intensity={22} color="#ff7a1a" />
       <Product kind={kind} autoRotate={autoRotate} />
-      <ContactShadows position={[0, -1.6, 0]} opacity={0.55} blur={2.5} scale={10} far={4} />
+      <ContactShadows position={[0, -1.6, 0]} color="#242c38" opacity={0.32} blur={2.6} scale={12} far={4} />
       <Environment resolution={256}>
+        <Lightformer intensity={2.4} color="#ffffff" position={[0, 6, 2]} scale={[14, 4, 1]} />
+        <Lightformer intensity={1.7} color="#ffffff" position={[0, -5, 2]} scale={[14, 4, 1]} />
         <Lightformer intensity={3} position={[0, 5, -2]} scale={[10, 2, 1]} />
         <Lightformer intensity={2} position={[-5, 1, 0]} rotation-y={Math.PI / 2} scale={[10, 1, 1]} />
         <Lightformer intensity={2.5} color="#ff8a3d" position={[5, 0, 1]} rotation-y={-Math.PI / 2} scale={[8, 1, 1]} />
-        <Lightformer intensity={1} position={[0, -3, 3]} scale={[10, 10, 1]} />
+        <Lightformer intensity={1.3} color="#ffffff" position={[0, 0, -8]} scale={[18, 18, 1]} />
       </Environment>
       <OrbitControls enablePan={false} minDistance={3.5} maxDistance={10} />
     </Canvas>
