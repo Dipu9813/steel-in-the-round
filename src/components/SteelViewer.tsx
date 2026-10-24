@@ -78,7 +78,7 @@ function Product({ kind, autoRotate }: { kind: ProductKey; autoRotate: boolean }
 
 export default function SteelViewer({ kind, autoRotate = true }: { kind: ProductKey; autoRotate?: boolean }) {
   return (
-    <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 1.2, 6], fov: 40 }}>
+    <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 1.2, 7.5], fov: 40 }}>
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 6, 4]} intensity={2} castShadow />
       <pointLight position={[-4, -1, 3]} intensity={30} color="#ff7a1a" />
