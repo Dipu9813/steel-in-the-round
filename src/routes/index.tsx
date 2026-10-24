@@ -85,7 +85,7 @@ function Index() {
               ))}
             </div>
           </div>
-          <div className="relative h-[420px] overflow-hidden rounded-2xl border border-border bg-card lg:h-[560px]">
+          <div className="relative h-[420px] lg:h-[560px]">
             <Viewer kind="ibeam" />
             <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-xs uppercase tracking-widest text-muted-foreground">Drag to rotate</span>
           </div>
@@ -108,7 +108,7 @@ function Index() {
               <button
                 key={x.key}
                 onClick={() => setActive(i)}
-                className={`shrink-0 rounded-xl border px-4 py-3 text-left transition-all ${i === active ? "border-primary bg-primary/10 shadow-glow" : "border-border hover:bg-accent"}`}
+                className={`shrink-0 rounded-xl px-4 py-3 text-left transition-all ${i === active ? "bg-primary/10 text-foreground" : "text-muted-foreground hover:bg-accent"}`}
               >
                 <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">0{i + 1} · {x.tag}</div>
                 <div className="font-display font-semibold">{x.name}</div>
@@ -116,12 +116,12 @@ function Index() {
             ))}
           </div>
 
-          <div className="relative h-[460px] overflow-hidden rounded-2xl border border-border bg-card lg:h-[560px]">
+          <div className="relative h-[460px] lg:h-[560px]">
             <Viewer key={p.key} kind={p.key} />
             <div className="pointer-events-none absolute left-5 top-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">Model / {p.name}</div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-6">
+          <div className="p-1 lg:pl-6">
             <span className="rounded-full bg-primary/15 px-3 py-1 font-mono text-xs text-primary">{p.tag}</span>
             <h3 className="mt-4 text-3xl font-bold">{p.name}</h3>
             <p className="mt-3 text-muted-foreground">{p.desc}</p>
@@ -144,7 +144,7 @@ function Index() {
               <button
                 key={x.key}
                 onClick={() => { setActive(i); document.getElementById("viewer")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="group rounded-2xl border border-border bg-card p-6 text-left transition-all hover:-translate-y-1 hover:border-primary hover:shadow-glow"
+                className="group border-t border-border pt-6 text-left transition-colors hover:text-primary"
               >
                 <div className="font-mono text-xs text-muted-foreground">0{i + 1}</div>
                 <h3 className="mt-6 text-2xl font-bold">{x.name}</h3>
@@ -157,7 +157,7 @@ function Index() {
       </section>
 
       {/* About */}
-      <section id="about" className="border-t border-border bg-card py-24">
+      <section id="about" className="border-t border-border py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-3">
           {[["Certified quality", "NS & IS certified mills with batch-level lab testing."], ["Seismic ready", "Fe 500D rebars engineered for high-ductility zones."], ["Nationwide delivery", "Dealer network reaching every province of Nepal."]].map(([t, d]) => (
             <div key={t}><div className="mb-4 h-1 w-12 bg-molten" /><h3 className="text-xl font-bold">{t}</h3><p className="mt-2 text-muted-foreground">{d}</p></div>
