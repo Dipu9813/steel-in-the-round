@@ -60,8 +60,7 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section className="relative grid-lines pt-16">
-        <div className="absolute inset-0 stage" />
+      <section className="relative pt-16">
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 py-16 lg:grid-cols-2 lg:py-24">
           <div>
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -167,7 +166,6 @@ function Index() {
 
       {/* Contact */}
       <section id="contact" className="relative overflow-hidden py-24">
-        <div className="absolute inset-0 stage" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-4xl font-bold md:text-6xl"><span className="text-steel-gradient">Ready to build</span> <span className="text-molten">stronger?</span></h2>
           <p className="mt-4 text-muted-foreground">Talk to our sales team for bulk pricing and project supply.</p>
