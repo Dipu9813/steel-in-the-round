@@ -44,7 +44,7 @@ function Index() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <header className="fixed inset-x-0 top-0 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-30 border-b border-border bg-background backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <a href="/" className="flex items-center gap-2 font-display text-lg font-bold">
             <span className="grid h-8 w-8 place-items-center rounded-md bg-molten text-primary-foreground">F</span>
