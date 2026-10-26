@@ -8,3 +8,10 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep furniture catalogue data and unconfirmed commercial fields in a browser-safe shared module so catalogue, enquiries and 3D selection stay synchronized.
+- Preserve the existing React Three Fiber viewer module and camera controls; furniture is generated with explicit detailed geometry because the requested steel furniture designs have no provided model assets.
+- Read 3D material colors from global semantic CSS tokens so the showroom follows the brand theme.
+- Use distinct TanStack content routes with shared furniture layout and page-specific metadata so navigation resolves to real pages.
+- Until a verified destination is configured, enquiry forms download an explicitly unsent draft; never simulate sending or persist customer data locally.
+- Use actual renders of the implemented furniture models for catalogue thumbnails; clearly label generated styling imagery and model previews as illustrative, not verified stock.

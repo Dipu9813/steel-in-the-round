@@ -1,0 +1,5 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout, PageHeading, ConceptGallery, ProductPhoto, furnitureHead } from "@/components/FurnitureSite";
+import { PRODUCTS } from "@/lib/furniture";
+export const Route = createFileRoute("/gallery")({ head: () => furnitureHead("Furniture design gallery", "View illustrative furniture designs from the New Yes Steel showroom. Official product and showroom photographs will be added when available."), component: Gallery });
+function Gallery() { return <SiteLayout><section className="site-width"><PageHeading eyebrow="New Yes Steel · Gallery" title="Furniture in focus.">Illustrative designs from the 3D showroom. Official product and showroom photographs are coming soon.</PageHeading><ConceptGallery /><div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">{PRODUCTS.map((p) => <figure key={p.key}><ProductPhoto product={p} /><figcaption className="mt-4 text-sm font-semibold">{p.name}<span className="mt-1 block text-xs font-normal text-muted-foreground">Illustrative 3D design</span></figcaption></figure>)}</div></section></SiteLayout>; }
