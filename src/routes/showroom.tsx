@@ -1,0 +1,5 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout, PageHeading, Showroom, furnitureHead } from "@/components/FurnitureSite";
+import { getProduct } from "@/lib/furniture";
+export const Route = createFileRoute("/showroom")({ validateSearch: (search: Record<string, unknown>) => ({ product: typeof search.product === "string" ? getProduct(search.product)?.key : undefined }), head: () => furnitureHead("Interactive 3D furniture showroom", "Explore furniture designs in 3D: almirahs, wardrobes, beds, chairs, desks, waiting benches and trunks. New Yes Steel Furniture Udhyog, Nepal."), component: ShowroomPage });
+function ShowroomPage() { const { product } = Route.useSearch(); return <SiteLayout><section className="site-width"><PageHeading eyebrow="New Yes Steel · 3D Showroom" title="Furniture. From every angle." /><Showroom key={product} initial={product} /></section></SiteLayout>; }
