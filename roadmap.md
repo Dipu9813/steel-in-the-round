@@ -5,3 +5,4 @@
 - [ ] Update business identity, navigation, catalogue, gallery, about and enquiries with red/blue accents.
 - [ ] Verify product switching, camera interaction, pure white layout and desktop/mobile rendering.
 - [ ] Configure direct enquiry delivery after verified business contact details are provided.
+- [ ] Add a quote form with furniture products, quantities and delivery details, validation and confirmed submission.
