@@ -1,5 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { SiteLayout, PageHeading, ConceptGallery, ProductPhoto, furnitureHead } from "@/components/FurnitureSite";
-import { PRODUCTS } from "@/lib/furniture";
-export const Route = createFileRoute("/gallery")({ head: () => furnitureHead("Furniture design gallery", "View illustrative furniture designs from the New Yes Steel showroom. Official product and showroom photographs will be added when available."), component: Gallery });
-function Gallery() { return <SiteLayout><section className="site-width"><PageHeading eyebrow="New Yes Steel · Gallery" title="Furniture in focus.">Illustrative furniture designs. Official product and showroom photos are pending.</PageHeading><ConceptGallery /><div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">{PRODUCTS.map((p) => <figure key={p.key}><ProductPhoto product={p} /><figcaption className="mt-4 text-sm font-semibold">{p.name}<span className="mt-1 block text-xs font-normal text-muted-foreground">Illustrative 3D design</span></figcaption></figure>)}</div></section></SiteLayout>; }
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { furnitureHead } from "@/components/FurnitureSite";
+import { LEGACY_SECTIONS } from "@/lib/site-navigation";
+export const Route = createFileRoute("/gallery")({
+  beforeLoad: () => { throw redirect({ to: "/", hash: LEGACY_SECTIONS.gallery, statusCode: 301 }); },
+  head: () => furnitureHead("Furniture designs", "Explore the New Yes Steel furniture collection."),
+});

@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { SiteLayout, PageHeading, furnitureHead } from "@/components/FurnitureSite";
-import { QuoteForm } from "@/components/QuoteForm";
-import { getProduct, type ProductKey } from "@/lib/furniture";
-export const Route = createFileRoute("/contact")({ validateSearch: (search: Record<string, unknown>): { product?: ProductKey } => { const p = typeof search["product"] === "string" ? getProduct(search["product"]) : undefined; return p ? { product: p.key } : {}; }, head: () => furnitureHead("Request a furniture quote", "Request furniture pricing with product quantities and delivery details from New Yes Steel Furniture Udhyog in Nepal."), component: Contact });
-function Contact() { const { product } = Route.useSearch(); return <SiteLayout><section className="site-width"><PageHeading eyebrow="New Yes Steel · Contact" title="Request a furniture quote." /><div className="mt-12 grid gap-12 md:grid-cols-[1fr_1.4fr]"><div><h2 className="text-2xl font-semibold">New Yes Steel<br />Furniture Udhyog</h2><p className="mt-4 text-sm text-secondary">Nepal</p><dl className="mt-8 divide-y divide-border border-y border-border text-sm">{["Phone", "Email", "Showroom address", "Opening hours"].map((label) => <div key={label} className="py-4"><dt className="font-semibold">{label}</dt><dd className="mt-2 text-xs text-muted-foreground">Awaiting verified details</dd></div>)}</dl></div><QuoteForm key={product} initial={product} /></div></section></SiteLayout>; }
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { furnitureHead } from "@/components/FurnitureSite";
+import { LEGACY_SECTIONS } from "@/lib/site-navigation";
+export const Route = createFileRoute("/contact")({
+  beforeLoad: () => { throw redirect({ to: "/", hash: LEGACY_SECTIONS.contact, statusCode: 301 }); },
+  head: () => furnitureHead("Contact New Yes Steel", "Visit New Yes Steel Furniture Udhyog and find verified contact details."),
+});

@@ -1,4 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { SiteLayout, PageHeading, Catalogue, furnitureHead } from "@/components/FurnitureSite";
-export const Route = createFileRoute("/products")({ head: () => furnitureHead("Furniture collection", "Explore almirahs, wardrobes, beds, chairs, office tables, waiting benches and storage furniture from New Yes Steel Furniture Udhyog."), component: Products });
-function Products() { return <SiteLayout><section className="site-width"><PageHeading eyebrow="New Yes Steel · Products" title="Furniture for everyday spaces.">Browse furniture designs for your home and workplace.</PageHeading><Catalogue /></section></SiteLayout>; }
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { furnitureHead } from "@/components/FurnitureSite";
+import { LEGACY_SECTIONS } from "@/lib/site-navigation";
+export const Route = createFileRoute("/products")({
+  beforeLoad: () => { throw redirect({ to: "/", hash: LEGACY_SECTIONS.products, statusCode: 301 }); },
+  head: () => furnitureHead("Furniture collection", "Browse steel furniture designs from New Yes Steel Furniture Udhyog."),
+});
