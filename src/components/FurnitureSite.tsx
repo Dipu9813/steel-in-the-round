@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, Box, Menu, X, RotateCcw, Pause, Play, Plus, Minus, DoorOpen, Armchair } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Box, Menu, X, RotateCcw, Pause, Play, Plus, Minus, DoorOpen } from "lucide-react";
+import logoAsset from "@/assets/new-yes-steel-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS, CATEGORIES, getProduct, type ProductKey, type FurnitureProduct } from "@/lib/furniture";
 import type { ViewerHandle } from "@/components/SteelViewer";
@@ -11,7 +12,7 @@ export function furnitureHead(title: string, description: string) {
   return { meta: [{ title: `${title} | NEW YES STEEL` }, { name: "description", content: description }, { property: "og:title", content: `${title} | NEW YES STEEL` }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] };
 }
 export function Brand() {
-  return <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="New Yes Steel Furniture Udhyog home"><span className="flex h-10 w-10 items-center justify-center border-l-[3px] border-primary text-secondary"><Armchair size={32} strokeWidth={1.8} /></span><span><span className="block font-display text-lg font-bold leading-tight">NEW YES <span className="text-secondary">STEEL</span></span><span className="block text-[10px] font-semibold text-muted-foreground">Furniture Udhyog · Nepal</span></span></Link>;
+  return <Link to="/" className="flex shrink-0 items-center" aria-label="New Yes Steel Furniture Udhyog home"><img src={logoAsset.url} alt="New Yes Steel Furniture Udhyog logo" className="h-14 w-auto" /></Link>;
 }
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [menu, setMenu] = useState(false);
