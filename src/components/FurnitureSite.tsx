@@ -43,10 +43,10 @@ function webglAvailable() {
   } catch { return false; }
 }
 class ViewerBoundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {
-  state = { failed: false };
+  override state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
-  componentDidCatch(error: unknown) { console.warn("3D viewer unavailable, showing photo instead", error); }
-  render() { return this.state.failed ? this.props.fallback : this.props.children; }
+  override componentDidCatch(error: unknown) { console.warn("3D viewer unavailable, showing photo instead", error); }
+  override render() { return this.state.failed ? this.props.fallback : this.props.children; }
 }
 function ViewerFallback({ kind }: { kind: ProductKey }) {
   const product = getProduct(kind);
