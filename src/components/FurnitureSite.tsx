@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from "react";
+import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Box, Menu, X, RotateCcw, Pause, Play, Plus, Minus, DoorOpen, Armchair } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS, CATEGORIES, getProduct, type ProductKey, type FurnitureProduct } from "@/lib/furniture";
@@ -36,10 +36,28 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     <footer className="border-t border-border"><div className="site-width flex flex-wrap items-center justify-between gap-6 py-9"><Brand /><p className="text-xs text-muted-foreground">© 2026 New Yes Steel Furniture Udhyog</p><Link to="/" hash="contact" className="text-xs font-semibold text-secondary">Let’s talk furniture <ArrowUpRight className="ml-1 inline" size={14} /></Link></div></footer>
   </div>;
 }
+function webglAvailable() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+  } catch { return false; }
+}
+class ViewerBoundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch(error: unknown) { console.warn("3D viewer unavailable, showing photo instead", error); }
+  render() { return this.state.failed ? this.props.fallback : this.props.children; }
+}
+function ViewerFallback({ kind }: { kind: ProductKey }) {
+  const product = getProduct(kind);
+  return <div className="flex h-full flex-col items-center justify-center gap-2">{product && <img src={product.images[0] ?? `/furniture/${kind}.jpg`} alt={`${product.name} — illustrative design`} className="max-h-[85%] w-auto object-contain" />}<p className="text-[10px] text-muted-foreground">3D view isn’t supported on this browser — showing a photo instead.</p></div>;
+}
 export function FurniturePreview({ kind, autoRotate = true, open = false, viewerRef }: { kind: ProductKey; autoRotate?: boolean; open?: boolean; viewerRef?: React.Ref<ViewerHandle> }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  return mounted ? <Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} /></Suspense> : null;
+  const [state, setState] = useState<"pending" | "ok" | "unsupported">("pending");
+  useEffect(() => setState(webglAvailable() ? "ok" : "unsupported"), []);
+  if (state === "pending") return null;
+  if (state === "unsupported") return <ViewerFallback kind={kind} />;
+  return <ViewerBoundary fallback={<ViewerFallback kind={kind} />}><Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} /></Suspense></ViewerBoundary>;
 }
 export function ProductPhoto({ product }: { product: FurnitureProduct }) {
   return <span className="catalogue-photo"><img src={product.images[0] ?? `/furniture/${product.key}.jpg`} alt={`${product.name} — illustrative 3D design`} loading="lazy" width={800} height={700} className="catalogue-image" /></span>;
