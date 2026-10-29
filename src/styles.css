@@ -71,8 +71,8 @@
 .hero-viewer .showroom-canvas { height: 470px; }
 .product-viewer .showroom-canvas { height: 420px; }
 .viewer-dialog { box-shadow: var(--viewer-shadow); }
-.showroom-map { height: 380px; }
-.showroom-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+.showroom-map { height: 400px; padding: 14px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); }
+.showroom-map iframe { display: block; width: 100%; height: 100%; border: 0; border-radius: calc(var(--radius) - 3px); }
 .product-tabs { scrollbar-width: thin; }
 .product-tab { border-bottom: 2px solid transparent; border-radius: 0; color: var(--muted-foreground); }
 .product-tab[aria-pressed="true"] { border-bottom-color: var(--primary); color: var(--foreground); background: transparent; }
