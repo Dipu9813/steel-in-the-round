@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, Showroom, Catalogue, furnitureHead } from "@/components/FurnitureSite";
 export const Route = createFileRoute("/")({ head: () => furnitureHead("New Yes Steel Furniture Udhyog", "Explore steel furniture for homes, offices and businesses in Nepal through the New Yes Steel interactive furniture catalogue."), component: Home });
