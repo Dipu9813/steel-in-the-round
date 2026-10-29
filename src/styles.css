@@ -71,7 +71,8 @@
 .hero-viewer .showroom-canvas { height: 470px; }
 .product-viewer .showroom-canvas { height: 420px; }
 .viewer-dialog { box-shadow: var(--viewer-shadow); }
-.map-placeholder { padding: 28px; }
+.showroom-map { height: 380px; }
+.showroom-map iframe { display: block; width: 100%; height: 100%; border: 0; }
 .product-tabs { scrollbar-width: thin; }
 .product-tab { border-bottom: 2px solid transparent; border-radius: 0; color: var(--muted-foreground); }
 .product-tab[aria-pressed="true"] { border-bottom-color: var(--primary); color: var(--foreground); background: transparent; }
