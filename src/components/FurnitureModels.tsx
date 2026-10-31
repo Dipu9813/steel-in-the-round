@@ -105,6 +105,7 @@ function GLTFModel({ url }: { url: string }) {
 useGLTF.preload("/models/almirah1.glb");
 useGLTF.preload("/models/daraz1.glb");
 
+
 export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?: boolean }) {
   const prod = getProduct(kind);
   if (prod?.modelUrl) {
@@ -112,7 +113,7 @@ export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?
   }
   const c = usePalette();
   if (!c.body) return null;
-  if (kind === "almirah") return <GLTFModel url="/models/almirah1.glb" />;
+  if (kind === "almirah1") return <GLTFModel url="/models/almirah1.glb" />;
   if (kind === "wardrobe") return <Cabinet c={c} wardrobe open={open} />;
   if (kind === "bed") return <Bed c={c} />;
   if (kind === "chair") return <group scale={1.7}><Chair c={c} /></group>;
