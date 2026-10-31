@@ -9,7 +9,35 @@ function Home() {
       <div className="min-w-0"><p className="eyebrow">New Yes Steel Furniture Udhyog</p><h1 className="hero-title mt-4 font-semibold">Quality Furniture.<br /><span className="text-secondary">Designed for Everyday Living.</span></h1><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
     </section>
     <section id="products" className="site-width border-t border-border py-14"><p className="eyebrow">The furniture collection</p><Catalogue /></section>
-    <section id="about" className="site-width border-t border-border py-14"><p className="eyebrow">About Us</p><div className="mt-5 grid gap-8 md:grid-cols-2"><h2 className="text-3xl font-semibold leading-snug">New Yes Steel<br /><span className="text-secondary">Furniture Udhyog</span></h2><div className="space-y-5 text-sm leading-7 text-muted-foreground"><p>New Yes Steel Furniture Udhyog is a steel furniture business in Nepal for homes and workplaces.</p><p>Our collection includes storage, beds, seating and office furniture.</p><Button asChild variant="link" className="px-0 text-secondary"><Link to="/" hash="contact">Talk to us <ArrowUpRight /></Link></Button></div></div></section>
+    <section id="about" className="about-section site-width border-t border-border py-14">
+      <div className="about-panel mt-5">
+        <div className="about-grid">
+          <div className="about-content">
+            <p className="about-kicker">Welcome to New Yes Steel</p>
+            <h2 className="about-heading mt-3">Two Decades of Steel Furniture Craftsmanship</h2>
+            <div className="about-copy mt-5 space-y-4">
+              <p>For more than 20 years, New Yes Steel Furniture Udhyog has created durable, elegant steel furniture for homes, offices, and businesses. Our products combine practical design with dependable craftsmanship for spaces built to last.</p>
+              <p>Using German powder-coating technology and specialized chemical pre-treatment, we deliver smooth finishes, stronger protection, and lasting performance across more than 100 unique designs.</p>
+            </div>
+            <blockquote className="about-quote">“Great furniture is not just about appearance — it is about quality that lasts.”</blockquote>
+            <div className="about-stats">
+              <div><p className="about-stat">20+</p><p className="about-stat-label">Years of Experience</p></div>
+              <div><p className="about-stat">100+</p><p className="about-stat-label">Unique Designs</p></div>
+            </div>
+            <div className="about-actions">
+              <Button asChild className="about-read-more shadow-none"><Link to="/" hash="contact">Our Story <ArrowUpRight /></Link></Button>
+              <Button asChild variant="outline" className="about-catalogue shadow-none"><Link to="/" hash="products">Request a Catalogue <ArrowRight /></Link></Button>
+            </div>
+          </div>
+          <figure className="about-figure">
+            <div className="about-image-frame">
+              <img src="/images/about-storefront-1300x440.webp" alt="New Yes Steel Furniture Udhyog showroom storefront" width={1300} height={440} loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Our showroom and factory outlet</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
     <section id="contact" className="contact-section site-width border-t border-border py-16">
       <div className="grid gap-10 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-14">
         <div className="md:pt-1">
