@@ -1,5 +1,5 @@
 import { RoundedBox, useGLTF } from "@react-three/drei";
-import type { ProductKey } from "@/lib/furniture";
+import { getProduct, type ProductKey } from "@/lib/furniture";
 import { useMemo, useEffect, useState } from "react";
 import * as THREE from "three";
 
@@ -72,8 +72,8 @@ function Desk({ c }: { c: Palette }) {
     {[0.24, 0.46, 0.65].map((y, i) => <group key={y}><Part at={[0.49, y, 0.338]} size={[0.47, i === 0 ? 0.24 : 0.16, 0.025]} color={c.body} /><Rail from={[0.39, y + 0.02, 0.375]} to={[0.59, y + 0.02, 0.375]} color={c.steel} radius={0.012} /></group>)}
   </>;
 }
-function CustomAlmirah() {
-  const { scene } = useGLTF("/models/almirah1.glb");
+function GLTFModel({ url }: { url: string }) {
+  const { scene } = useGLTF(url);
 
   const model = useMemo(() => {
     const clone = scene.clone(true);
@@ -103,11 +103,16 @@ function CustomAlmirah() {
 }
 
 useGLTF.preload("/models/almirah1.glb");
+useGLTF.preload("/models/daraz1.glb");
 
 export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?: boolean }) {
+  const prod = getProduct(kind);
+  if (prod?.modelUrl) {
+    return <GLTFModel url={prod.modelUrl} />;
+  }
   const c = usePalette();
   if (!c.body) return null;
-  if (kind === "almirah") return <CustomAlmirah />;
+  if (kind === "almirah") return <GLTFModel url="/models/almirah1.glb" />;
   if (kind === "wardrobe") return <Cabinet c={c} wardrobe open={open} />;
   if (kind === "bed") return <Bed c={c} />;
   if (kind === "chair") return <group scale={1.7}><Chair c={c} /></group>;

@@ -1,6 +1,8 @@
 # 3D Model Integration Workflow
 
 > **Purpose:** This document is the complete, authoritative guide for adding `.glb` 3D models to the *steel-in-the-round* frontend. It is written so that **any AI coding assistant** (ChatGPT, Claude, Gemini, GitHub Copilot, Lovable, Cursor, etc.) can read this file, understand the full pipeline, and implement new 3D models correctly without additional context.
+>
+> 💡 **Quick Guide:** For a concise walkthrough on adding products and images across all categories, see [HOW-TO-ADD-PRODUCTS.md](file:///c:/Users/dipru/OneDrive/Documents/codes/code/steel-in-the-round/HOW-TO-ADD-PRODUCTS.md).
 
 ---
 
