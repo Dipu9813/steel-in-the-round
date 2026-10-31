@@ -1,12 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SiteLayout, Catalogue, furnitureHead } from "@/components/FurnitureSite";
+import { SiteLayout, Catalogue, Showroom, furnitureHead } from "@/components/FurnitureSite";
 export const Route = createFileRoute("/")({ head: () => furnitureHead("New Yes Steel Furniture Udhyog", "Explore steel furniture for homes, offices and businesses in Nepal through the New Yes Steel interactive furniture catalogue."), component: Home });
 function Home() {
   return <SiteLayout>
     <section id="home" className="site-width hero-section py-16">
-      <div className="min-w-0"><p className="eyebrow">New Yes Steel Furniture Udhyog</p><h1 className="hero-title mt-4 font-semibold">Quality Furniture.<br /><span className="text-secondary">Designed for Everyday Living.</span></h1><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
+      <div className="hero-grid">
+        <div className="min-w-0"><p className="eyebrow">New Yes Steel Furniture Udhyog</p><h1 className="hero-title mt-4 font-semibold">Quality Furniture.<br /><span className="text-secondary">Designed for Everyday Living.</span></h1><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
+        <div className="hero-model"><Showroom hero initial="almirah" /></div>
+      </div>
     </section>
     <section id="products" className="site-width border-t border-border py-14"><p className="eyebrow">The furniture collection</p><Catalogue /></section>
     <section id="about" className="about-section site-width border-t border-border py-14">

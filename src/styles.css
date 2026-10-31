@@ -67,6 +67,8 @@
 .brand-logo-wrap { height: 64px; width: 64px; overflow: hidden; }
 .brand-logo { display: block; width: 64px; height: 64px; object-fit: contain; }
 .eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0; color: var(--secondary); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; align-items: center; }
+.hero-model { min-width: 0; }
 .hero-title { font-size: 48px; line-height: 1.14; text-wrap: balance; }
 .about-panel { background: #ffffff; padding: 3rem; border: 0; border-radius: 0.75rem; box-shadow: 0 1.125rem 3.125rem #2224290d; }
 .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: stretch; }
@@ -126,6 +128,7 @@ a:focus-visible { outline: 2px solid var(--secondary); outline-offset: 5px; }
   .site-width { width: calc(100% - 36px); }
   .brand-logo-wrap, .brand-logo { width: 56px; height: 56px; }
   .hero-title { font-size: 34px; }
+  .hero-grid { grid-template-columns: 1fr; }
   .about-panel { padding: 1.5rem; }
   .about-grid { display: flex; flex-direction: column; gap: 2rem; align-items: stretch; }
   .about-heading { max-width: none; }
