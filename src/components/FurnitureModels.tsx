@@ -1,6 +1,6 @@
-import { RoundedBox } from "@react-three/drei";
+import { RoundedBox, useGLTF } from "@react-three/drei";
 import type { ProductKey } from "@/lib/furniture";
-import { useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import * as THREE from "three";
 
 type Point = [number, number, number];
@@ -72,10 +72,43 @@ function Desk({ c }: { c: Palette }) {
     {[0.24, 0.46, 0.65].map((y, i) => <group key={y}><Part at={[0.49, y, 0.338]} size={[0.47, i === 0 ? 0.24 : 0.16, 0.025]} color={c.body} /><Rail from={[0.39, y + 0.02, 0.375]} to={[0.59, y + 0.02, 0.375]} color={c.steel} radius={0.012} /></group>)}
   </>;
 }
+function CustomAlmirah() {
+  const { scene } = useGLTF("/models/almirah1.glb");
+
+  const model = useMemo(() => {
+    const clone = scene.clone(true);
+
+    clone.traverse((object) => {
+      if (object instanceof THREE.Mesh) {
+        object.castShadow = true;
+        object.receiveShadow = true;
+      }
+    });
+
+    const box = new THREE.Box3().setFromObject(clone);
+    const size = box.getSize(new THREE.Vector3());
+    const scale = 2.15 / size.y;
+
+    clone.scale.setScalar(scale);
+
+    const scaledBox = new THREE.Box3().setFromObject(clone);
+    clone.position.x -= (scaledBox.min.x + scaledBox.max.x) / 2;
+    clone.position.y -= scaledBox.min.y;
+    clone.position.z -= (scaledBox.min.z + scaledBox.max.z) / 2;
+
+    return clone;
+  }, [scene]);
+
+  return <primitive object={model} />;
+}
+
+useGLTF.preload("/models/almirah1.glb");
+
 export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?: boolean }) {
   const c = usePalette();
   if (!c.body) return null;
-  if (kind === "almirah" || kind === "wardrobe") return <Cabinet c={c} wardrobe={kind === "wardrobe"} open={open} />;
+  if (kind === "almirah") return <CustomAlmirah />;
+  if (kind === "wardrobe") return <Cabinet c={c} wardrobe open={open} />;
   if (kind === "bed") return <Bed c={c} />;
   if (kind === "chair") return <group scale={1.7}><Chair c={c} /></group>;
   if (kind === "desk") return <group scale={1.35}><Desk c={c} /></group>;
