@@ -106,6 +106,8 @@ a:focus-visible { outline: 2px solid var(--secondary); outline-offset: 5px; }
   .site-width { width: calc(100% - 36px); }
   .hero-title { font-size: 34px; }
   .page-title { font-size: 34px; }
+  .contact-heading { font-size: 32px; }
+  .showroom-map { height: 320px; }
   .showroom-canvas { height: 350px; }
   .hero-viewer .showroom-canvas { height: 350px; }
   .product-viewer .showroom-canvas { height: 300px; }
