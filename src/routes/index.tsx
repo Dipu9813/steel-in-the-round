@@ -17,7 +17,7 @@ function Home() {
           <h2 className="contact-heading mt-3">Visit our showroom</h2>
           <div className="mt-8 border-t border-border pt-6">
             <h3 className="contact-name">New Yes Steel Furniture Udhyog</h3>
-            <p className="contact-body mt-2">Dhalebar, Madhesh Province, Nepal</p>
+            <p className="contact-body mt-2">Dhalkebar, Madhesh Province, Nepal</p>
             <p className="contact-body contact-muted mt-5 max-w-sm">Find the showroom on the map, or open it in Google Maps for directions.</p>
             <a className="contact-link mt-5 inline-block" href="https://maps.app.goo.gl/7T6zVyuDT5pT1pAM7" target="_blank" rel="noreferrer">Open in Google Maps →</a>
           </div>
