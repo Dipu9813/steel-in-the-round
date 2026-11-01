@@ -19,7 +19,10 @@ export interface FurnitureProduct {
   category: string;
   description: string;
   dimensions: string | null;
+  size: string;
+  material: string;
   finish: string | null;
+  colors: string;
   priceNpr: number | null;
   availability: string | null;
   images: string[];
@@ -58,10 +61,14 @@ const product = (
   category,
   description,
   dimensions: options.dimensions ?? null,
+  // TODO: Replace placeholder product specifications with verified catalogue data.
+  size: "Size: To be confirmed",
+  material: "Material: To be confirmed",
   finish: options.finish ?? null,
+  colors: "Colors: To be confirmed",
   priceNpr: options.priceNpr ?? null,
   availability: options.availability ?? null,
-  images: options.images ?? (options.modelUrl ? [] : []),
+  images: options.images ?? [],
   modelUrl: options.modelUrl,
 });
 
@@ -78,4 +85,6 @@ export const PRODUCTS: FurnitureProduct[] = [
   product("trunk", "Steel Storage Trunk", CATEGORIES[5] ?? "Storage", "A lidded storage design with carry handles and a front latch for keeping household essentials together."),
 ];
 
-export function getProduct(key: string) { return PRODUCTS.find((p) => p.key === key) ?? PRODUCTS[0]; }
+export function getProduct(key: string) {
+  return PRODUCTS.find((p) => p.key === key) ?? PRODUCTS[0];
+}
