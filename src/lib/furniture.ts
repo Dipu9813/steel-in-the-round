@@ -5,6 +5,7 @@ export const PRODUCT_KEYS = [
   "bed",
   "chair",
   "chair1",
+  "sofa",
   "desk",
   "desk1",
   "bench",
@@ -34,6 +35,7 @@ export const CATEGORIES = [
   "Wardrobes & Cupboards",
   "Steel Beds",
   "Chairs & Waiting Benches",
+  "Sofas",
   "Office Tables & Desks",
   "Storage Cabinets & Trunks",
   "Household Furniture",
@@ -79,10 +81,11 @@ export const PRODUCTS: FurnitureProduct[] = [
   product("bed", "Steel Bed", CATEGORIES[2] ?? "Bedroom", "A clean-lined steel bed design with a headboard and supporting frame, shown with a mattress for context."),
   product("chair", "Executive Office Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest."),
   product("chair1", "Steel Dining Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest.", { images: ["/furniture/chair1.jpg"], modelUrl: "/models/chair1.glb" }),
-  product("desk", "Office Table with Drawers", CATEGORIES[4] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials."),
-  product("desk1", "Steel Workshop Table", CATEGORIES[4] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials.", { images: ["/furniture/table1.jpg"], modelUrl: "/models/table1.glb" }),
+  product("sofa", "Steel Sofa", CATEGORIES[4] ?? "Sofas", "A practical sofa design with a durable steel frame and cushioned seating for homes, offices and waiting spaces."),
+  product("desk", "Office Table with Drawers", CATEGORIES[5] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials."),
+  product("desk1", "Steel Workshop Table", CATEGORIES[5] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials.", { images: ["/furniture/table1.jpg"], modelUrl: "/models/table1.glb" }),
   product("bench", "Waiting Bench", CATEGORIES[3] ?? "Seating", "Connected seating on a shared metal frame, designed for reception and waiting spaces."),
-  product("trunk", "Steel Storage Trunk", CATEGORIES[5] ?? "Storage", "A lidded storage design with carry handles and a front latch for keeping household essentials together."),
+  product("trunk", "Steel Storage Trunk", CATEGORIES[6] ?? "Storage", "A lidded storage design with carry handles and a front latch for keeping household essentials together."),
 ];
 
 export function getProduct(key: string) {

@@ -11,5 +11,5 @@ describe("Furniture catalogue rules", () => {
     expect(getProduct("bed")?.name).toBe("Steel Bed");
     expect(getProduct("desk")?.category).toBe("Office Tables & Desks");
   });
-  it("includes all eight requested furniture categories", () => { expect(CATEGORIES).toHaveLength(8); expect(CATEGORIES).toContain("Household Furniture"); expect(CATEGORIES).toContain("Other available furniture"); });
+  it("includes the requested furniture categories", () => { expect(CATEGORIES).toHaveLength(9); expect(CATEGORIES).toContain("Sofas"); expect(CATEGORIES).toContain("Household Furniture"); expect(CATEGORIES).toContain("Other available furniture"); });
 });

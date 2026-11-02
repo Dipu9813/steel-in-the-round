@@ -63,6 +63,15 @@ function Chair({ c, offset = 0, bench = false }: { c: Palette; offset?: number; 
     {!bench && [-1, 1].flatMap((x) => [-1, 1].map((z) => <Rail key={`${x}${z}`} from={[x * 0.255, 0.025, z * 0.245]} to={[x * 0.2, z < 0 ? 1.01 : 0.47, z * 0.19]} color={c.steel} />))}
   </group>;
 }
+function Sofa({ c }: { c: Palette }) {
+  return <group scale={1.35}>
+    <Part at={[0, 0.52, 0]} size={[1.8, 0.38, 0.72]} color={c.fabric} metal={0} radius={0.09} />
+    <Part at={[0, 0.94, -0.27]} size={[1.82, 0.72, 0.2]} color={c.fabric} metal={0} radius={0.08} />
+    {[-0.78, 0.78].map((x) => <Part key={x} at={[x, 0.66, 0]} size={[0.18, 0.62, 0.82]} color={c.fabric} metal={0} radius={0.07} />)}
+    {[-0.48, 0.48].map((x) => <Part key={x} at={[x, 0.76, 0.03]} size={[0.78, 0.16, 0.6]} color={c.top} metal={0} radius={0.05} />)}
+    {[-0.68, 0.68].map((x) => <group key={x}><Rail from={[x, 0.04, -0.25]} to={[x, 0.4, -0.25]} color={c.steel} radius={0.028} /><Rail from={[x, 0.04, 0.25]} to={[x, 0.4, 0.25]} color={c.steel} radius={0.028} /></group>)}
+  </group>;
+}
 function Desk({ c }: { c: Palette }) {
   return <>
     <Part at={[0, 0.79, 0]} size={[1.65, 0.055, 0.78]} color={c.top} metal={0.1} />
@@ -117,6 +126,7 @@ export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?
   if (kind === "wardrobe") return <Cabinet c={c} wardrobe open={open} />;
   if (kind === "bed") return <Bed c={c} />;
   if (kind === "chair") return <group scale={1.7}><Chair c={c} /></group>;
+  if (kind === "sofa") return <Sofa c={c} />;
   if (kind === "desk") return <group scale={1.35}><Desk c={c} /></group>;
   if (kind === "bench") return <group scale={1.3}>{[-0.6, 0, 0.6].map((x) => <Chair key={x} c={c} offset={x} bench />)}<Part at={[0, 0.4, 0]} size={[1.85, 0.065, 0.065]} color={c.body} />{[-0.65, 0.65].map((x) => <group key={x}><Rail from={[x, 0.05, 0]} to={[x, 0.4, 0]} color={c.steel} radius={0.04} /><Part at={[x, 0.045, 0]} size={[0.08, 0.06, 0.64]} color={c.steel} /></group>)}</group>;
   return <group scale={1.5}><Part at={[0, 0.33, 0]} size={[1.2, 0.6, 0.64]} color={c.body} /><group position={[0, 0.64, -0.32]} rotation-x={open ? -1 : 0}><Part at={[0, 0, 0.32]} size={[1.23, 0.055, 0.67]} color={c.body} /></group><Part at={[0, 0.52, 0.344]} size={[0.075, 0.14, 0.02]} color={c.steel} />{[-1, 1].map((side) => <group key={side}><Rail from={[side * 0.63, 0.38, -0.1]} to={[side * 0.63, 0.38, 0.1]} color={c.steel} radius={0.018} /><Part at={[side * 0.58, 0.33, 0.322]} size={[0.035, 0.53, 0.012]} color={c.steel} /></group>)}</group>;
