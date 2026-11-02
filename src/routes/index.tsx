@@ -18,7 +18,7 @@ function Home() {
   };
   return <SiteLayout>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-    <section id="home" className="site-width hero-section pt-6 pb-16">
+    <section id="home" className="site-width hero-section pt-6 pb-8">
       <div className="hero-grid">
         <div className="min-w-0"><p className="eyebrow">New Yes Steel Furniture Udhyog</p><h1 className="hero-title mt-4 font-semibold">Quality Furniture.<br /><span className="text-secondary">Designed for Everyday Living.</span></h1><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
         <div className="hero-model"><Showroom hero initial="almirah1" /></div>
@@ -41,7 +41,7 @@ function Home() {
               <div><p className="about-stat">100+</p><p className="about-stat-label">Unique Designs</p></div>
             </div>
             <div className="about-actions">
-              <Button asChild variant="link" className="about-read-more shadow-none"><Link to="/" hash="contact">Our Story <ArrowUpRight /></Link></Button>
+              <Button asChild variant="outline" className="about-read-more shadow-none"><Link to="/" hash="contact">Our Story <ArrowUpRight /></Link></Button>
               <Button asChild className="about-catalogue shadow-none"><Link to="/" hash="products">Request a Catalogue <ArrowRight /></Link></Button>
             </div>
           </div>
@@ -55,22 +55,22 @@ function Home() {
       </div>
     </section>
     <section id="contact" className="contact-section site-width site-section border-t border-border">
-      <div className="grid gap-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-8">
-        <div className="md:pt-1">
+      <div className="contact-grid">
+        <div className="contact-info">
           <p className="contact-label">Contact</p>
-          <h2 className="contact-heading mt-3">Visit our showroom</h2>
-          <div className="mt-8 border-t border-border pt-6">
+          <h2 className="contact-heading">Visit our showroom</h2>
+          <div className="contact-details">
             <h3 className="contact-name">New Yes Steel Furniture Udhyog</h3>
-            <p className="contact-body mt-2">{siteConfig.address}</p>
-            <p className="contact-body contact-muted mt-5 max-w-sm">Find the showroom on the map, or open it in Google Maps for directions.</p>
-            <div className="mt-5 space-y-2">
+            <p className="contact-body">{siteConfig.address}</p>
+            <p className="contact-body contact-muted">Find the showroom on the map, or open it in Google Maps for directions.</p>
+            <div className="contact-links">
               <p className="contact-body">Open {siteConfig.openingHours}</p>
               <p className="contact-body"><a className="contact-link" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a> · <a className="contact-link break-all" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
               <a className="contact-link inline-block" href={siteConfig.mapsUrl} target="_blank" rel="noreferrer">Open in Google Maps →</a>
             </div>
           </div>
         </div>
-        <div className="showroom-map"><iframe src="https://www.google.com/maps?q=26.9294622,85.9543608&z=19&output=embed" title="Google Map showing the precise location of New Yes Steel Furniture Udhyog" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
+        <div className="showroom-map contact-map"><iframe src="https://www.google.com/maps?q=26.9294622,85.9543608&z=19&output=embed" title="Google Map showing the precise location of New Yes Steel Furniture Udhyog" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
       </div>
     </section>
   </SiteLayout>;

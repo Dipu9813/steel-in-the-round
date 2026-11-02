@@ -25,13 +25,13 @@ const SteelViewer = forwardRef<ViewerHandle, { kind: ProductKey; autoRotate?: bo
     },
   }), []);
   if (!palette.white) return null;
-  return <Canvas shadows dpr={[1, 1.5]} camera={{ position: [3.6, 2.8, 5.3], fov: 33 }} gl={{ preserveDrawingBuffer: true }}>
+  return <Canvas shadows dpr={[1, 1.25]} camera={{ position: [3.6, 2.8, 5.3], fov: 33 }} gl={{ powerPreference: "high-performance", antialias: true }}>
     <color attach="background" args={[palette.white]} />
     <ambientLight intensity={0.7} />
-    <directionalLight position={[3, 6, 4]} intensity={2} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
+    <directionalLight position={[3, 6, 4]} intensity={2} castShadow shadow-mapSize-width={512} shadow-mapSize-height={512} />
     <FurnitureModel kind={kind} open={open} />
-    <ContactShadows position={[0, -0.005, 0]} color={palette.shadow} opacity={0.35} blur={2.7} scale={8} far={3} resolution={256} />
-    <Environment resolution={128}>
+    <ContactShadows position={[0, -0.005, 0]} color={palette.shadow} opacity={0.35} blur={2.7} scale={8} far={3} resolution={128} />
+    <Environment resolution={64}>
       <Lightformer intensity={2.4} color={palette.white} position={[0, 6, 2]} scale={[10, 4, 1]} />
       <Lightformer intensity={1.5} color={palette.white} position={[-5, 2, 1]} rotation-y={Math.PI / 2} scale={[8, 4, 1]} />
       <Lightformer intensity={1.8} color={palette.white} position={[4, 3, -3]} rotation-y={-Math.PI / 2} scale={[8, 4, 1]} />
