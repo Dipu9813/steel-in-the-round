@@ -10,7 +10,7 @@ Adding a new product requires only **2 simple steps**:
 1. Drop your files into `public/` (the `.glb` model and `.jpg`/`.png` image).
 2. Register the product in [`src/lib/furniture.ts`](file:///c:/Users/dipru/OneDrive/Documents/codes/code/steel-in-the-round/src/lib/furniture.ts).
 
-Everything else—the 3D showroom viewer, catalogue card, category filter, and quote request form—is **100% automated**.
+Everything else—the 3D showroom viewer, catalogue card, category filter, and WhatsApp enquiry link—is **100% automated**.
 
 ---
 
@@ -115,8 +115,8 @@ Once added, the frontend automatically handles everything:
    - Clicking **"View in Showroom"** opens the modal dialog.
    - Renders the `.glb` model with 360° rotation, camera zoom in/out, and reset controls.
    - The model is automatically centered and scaled to fit the camera view.
-3. **Quote Request Form** (`#contact`):
-   - The item is automatically added as a selectable checkbox with quantity controls in Step 1 of the quote request form.
+3. **WhatsApp enquiry link**:
+   - The product catalogue automatically includes an enquiry link that opens WhatsApp with the product name and category.
    - Submissions pass strict backend validation without any schema changes needed.
 4. **Hero Section (Optional)**:
    - If you want this product featured as the main rotating 3D model at the top of the homepage, open [`src/routes/index.tsx`](file:///c:/Users/dipru/OneDrive/Documents/codes/code/steel-in-the-round/src/routes/index.tsx) and change:
