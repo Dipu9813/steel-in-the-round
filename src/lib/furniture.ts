@@ -11,7 +11,8 @@ export const PRODUCT_KEYS = [
   "desk1",
   "bench",
   "trunk",
-  "locker1"
+  "locker1",
+  "rack1",
 ] as const;
 
 export type ProductKey = (typeof PRODUCT_KEYS)[number];
@@ -89,6 +90,7 @@ export const PRODUCTS: FurnitureProduct[] = [
   product("bench", "Waiting Bench", CATEGORIES[3] ?? "Seating", "Connected seating on a shared metal frame, designed for reception and waiting spaces."),
   product("trunk", "Steel Storage Trunk", CATEGORIES[6] ?? "Storage", "A lidded storage design with carry handles and a front latch for keeping household essentials together."),
   product("locker1", "Steel Locker", CATEGORIES[6] ?? "Storage", "A secure storage solution with a lockable door and a sturdy frame for keeping items safe.", { images: ["/furniture/locker1.jpg"], modelUrl: "/models/locker1.glb" }),
+  product("rack1", "Steel Locker", CATEGORIES[6] ?? "Storage", "A secure storage solution with a lockable door and a sturdy frame for keeping items safe.", { images: ["/furniture/rack1.jpg"], modelUrl: "/models/rack1.glb" }),
 ];
 
 export function getProduct(key: string) {
