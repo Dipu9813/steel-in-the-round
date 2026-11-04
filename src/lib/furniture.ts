@@ -1,5 +1,6 @@
 export const PRODUCT_KEYS = [
   "almirah1",
+  "almirah2",
   "wardrobe",
   "wardrobe2",
   "bed",
@@ -10,10 +11,12 @@ export const PRODUCT_KEYS = [
   "sofa2",
   "desk",
   "desk1",
+  "desk2",
   "bench",
   "trunk",
   "locker1",
   "rack1",
+  "wardrobe1"
 ] as const;
 
 export type ProductKey = (typeof PRODUCT_KEYS)[number];
@@ -80,8 +83,10 @@ const product = (
 
 export const PRODUCTS: FurnitureProduct[] = [
   product("almirah1", "Steel Almirah / Daraz", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah1.jpg"], modelUrl: "/models/almirah1.glb" }),
+  product("almirah2", "Steel Almirah / Daraz", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah2.jpg"], modelUrl: "/models/almirah2.glb" }),
   product("wardrobe", "Steel Wardrobe 3-Door", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom."),
   product("wardrobe2", "Steel Wardrobe 2-Door", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/daraz1.jpg"], modelUrl: "/models/daraz1.glb" }),
+  product("wardrobe1", "Steel Wardrobe 2-Door", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/wardrobe1.jpg"], modelUrl: "/models/wardrobe1.glb" }),
   product("bed", "Steel Bed", CATEGORIES[2] ?? "Bedroom", "A clean-lined steel bed design with a headboard and supporting frame, shown with a mattress for context."),
   product("chair", "Executive Office Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest."),
   product("chair1", "Steel Dining Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest.", { images: ["/furniture/chair1.jpg"], modelUrl: "/models/chair1.glb" }),
@@ -89,6 +94,7 @@ export const PRODUCTS: FurnitureProduct[] = [
   product("sofa2", "Steel Sofa", CATEGORIES[4] ?? "Sofas", "A practical sofa design with a durable steel frame and cushioned seating for homes, offices and waiting spaces.", { images: ["/furniture/sofa2.jpg"], modelUrl: "/models/sofa2.glb" }),
   product("desk", "Office Table with Drawers", CATEGORIES[5] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials."),
   product("desk1", "Steel Workshop Table", CATEGORIES[5] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials.", { images: ["/furniture/table1.jpg"], modelUrl: "/models/table1.glb" }),
+  product("desk2", "Steel Workshop Table", CATEGORIES[5] ?? "Office", "A practical workspace design with a generous tabletop and drawer storage for everyday office essentials.", { images: ["/furniture/table2.jpg"], modelUrl: "/models/table2.glb" }),
   product("bench", "Waiting Bench", CATEGORIES[3] ?? "Seating", "Connected seating on a shared metal frame, designed for reception and waiting spaces."),
   product("trunk", "Steel Storage Trunk", CATEGORIES[6] ?? "Storage", "A lidded storage design with carry handles and a front latch for keeping household essentials together."),
   product("locker1", "Steel Locker", CATEGORIES[6] ?? "Storage", "A secure storage solution with a lockable door and a sturdy frame for keeping items safe.", { images: ["/furniture/locker1.jpg"], modelUrl: "/models/locker1.glb" }),
