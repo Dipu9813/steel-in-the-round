@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Clock3, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, Catalogue, Showroom, SectionHeader, furnitureHead } from "@/components/FurnitureSite";
 import { siteConfig } from "@/config/site";
@@ -58,16 +58,17 @@ function Home() {
       <div className="contact-grid">
         <div className="contact-info">
           <p className="contact-label">Contact</p>
-          <h2 className="contact-heading">Visit our showroom</h2>
+          <h2 className="section-title contact-heading">Visit Our Showroom</h2>
           <div className="contact-details">
             <h3 className="contact-name">New Yes Steel Furniture Udhyog</h3>
-            <p className="contact-body">{siteConfig.address}</p>
-            <p className="contact-body contact-muted">Find the showroom on the map, or open it in Google Maps for directions.</p>
+            <p className="contact-intro">Visit us to explore durable steel furniture, practical designs, and finishes made for everyday living.</p>
             <div className="contact-links">
-              <p className="contact-body">Open {siteConfig.openingHours}</p>
-              <p className="contact-body"><a className="contact-link" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a> · <a className="contact-link break-all" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
-              <a className="contact-link inline-block" href={siteConfig.mapsUrl} target="_blank" rel="noreferrer">Open in Google Maps →</a>
+              <div className="contact-item"><MapPin aria-hidden="true" /><p>{siteConfig.address}</p></div>
+              <div className="contact-item"><Clock3 aria-hidden="true" /><p>Sunday–Friday, 9:00 AM – 6:00 PM</p></div>
+              <div className="contact-item"><Phone aria-hidden="true" /><a className="contact-link" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></div>
+              <div className="contact-item"><Mail aria-hidden="true" /><a className="contact-link break-all" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div>
             </div>
+            <Button asChild className="contact-directions shadow-none"><a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer">Get Directions <Navigation aria-hidden="true" /></a></Button>
           </div>
         </div>
         <div className="showroom-map contact-map"><iframe src="https://www.google.com/maps?q=26.9294622,85.9543608&z=19&output=embed" title="Google Map showing the precise location of New Yes Steel Furniture Udhyog" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
