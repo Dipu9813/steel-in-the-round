@@ -1,5 +1,6 @@
 export const PRODUCT_KEYS = [
   "almirah1",
+  "almirah2",
   "wardrobe",
   "wardrobe2",
   "bed",
@@ -15,6 +16,7 @@ export const PRODUCT_KEYS = [
   "trunk",
   "locker1",
   "rack1",
+  "wardrobe1"
 ] as const;
 
 export type ProductKey = (typeof PRODUCT_KEYS)[number];
@@ -81,8 +83,10 @@ const product = (
 
 export const PRODUCTS: FurnitureProduct[] = [
   product("almirah1", "Steel Almirah / Daraz", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah1.jpg"], modelUrl: "/models/almirah1.glb" }),
+  product("almirah2", "Steel Almirah / Daraz", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah2.jpg"], modelUrl: "/models/almirah2.glb" }),
   product("wardrobe", "Steel Wardrobe 3-Door", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom."),
   product("wardrobe2", "Steel Wardrobe 2-Door", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/daraz1.jpg"], modelUrl: "/models/daraz1.glb" }),
+  product("wardrobe1", "Steel Wardrobe 2-Door", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/wardrobe1.jpg"], modelUrl: "/models/wardrobe1.glb" }),
   product("bed", "Steel Bed", CATEGORIES[2] ?? "Bedroom", "A clean-lined steel bed design with a headboard and supporting frame, shown with a mattress for context."),
   product("chair", "Executive Office Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest."),
   product("chair1", "Steel Dining Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest.", { images: ["/furniture/chair1.jpg"], modelUrl: "/models/chair1.glb" }),
