@@ -58,7 +58,7 @@ function Home() {
       <div className="contact-grid">
         <div className="contact-info">
           <p className="contact-label">Contact</p>
-          <h2 className="contact-heading">Visit Our Showroom</h2>
+          <h2 className="section-title contact-heading">Visit Our Showroom</h2>
           <div className="contact-details">
             <h3 className="contact-name">New Yes Steel Furniture Udhyog</h3>
             <p className="contact-intro">Visit us to explore durable steel furniture, practical designs, and finishes made for everyday living.</p>
