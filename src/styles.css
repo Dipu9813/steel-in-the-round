@@ -113,7 +113,7 @@
 .powder-figure img { display: block; width: 100%; height: auto; object-fit: cover; object-position: center; border-radius: var(--radius-image); }
 .powder-figure figcaption { margin-top: 8px; color: var(--muted-foreground); font-size: 13px; line-height: 1.5; text-align: center; }
 .powder-definition { max-width: 760px; }
-.showroom-canvas { height: 490px; touch-action: none; }
+.showroom-canvas { height: 490px; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-image); background: var(--model-white); box-shadow: var(--shadow-subtle); touch-action: none; }
 .showroom-canvas canvas { touch-action: none; }
 .hero-viewer .showroom-canvas { height: 610px; }
 .product-viewer .showroom-canvas { height: 420px; }
