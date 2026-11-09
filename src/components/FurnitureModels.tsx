@@ -81,7 +81,7 @@ function Desk({ c }: { c: Palette }) {
     {[0.24, 0.46, 0.65].map((y, i) => <group key={y}><Part at={[0.49, y, 0.338]} size={[0.47, i === 0 ? 0.24 : 0.16, 0.025]} color={c.body} /><Rail from={[0.39, y + 0.02, 0.375]} to={[0.59, y + 0.02, 0.375]} color={c.steel} radius={0.012} /></group>)}
   </>;
 }
-function GLTFModel({ url }: { url: string }) {
+function GLTFModel({ url, modelScale = 1 }: { url: string; modelScale?: number }) {
   const { scene } = useGLTF(url);
 
   const model = useMemo(() => {
@@ -96,7 +96,7 @@ function GLTFModel({ url }: { url: string }) {
 
     const box = new THREE.Box3().setFromObject(clone);
     const size = box.getSize(new THREE.Vector3());
-    const scale = 2.15 / size.y;
+    const scale = (2.15 / size.y) * modelScale;
 
     clone.scale.setScalar(scale);
 
@@ -106,7 +106,7 @@ function GLTFModel({ url }: { url: string }) {
     clone.position.z -= (scaledBox.min.z + scaledBox.max.z) / 2;
 
     return clone;
-  }, [scene]);
+  }, [modelScale, scene]);
 
   return <primitive object={model} />;
 }
@@ -118,7 +118,7 @@ useGLTF.preload("/models/daraz1.glb");
 export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?: boolean }) {
   const prod = getProduct(kind);
   if (prod?.modelUrl) {
-    return <GLTFModel url={prod.modelUrl} />;
+    return <GLTFModel url={prod.modelUrl} {...(prod.modelScale !== undefined ? { modelScale: prod.modelScale } : {})} />;
   }
   const c = usePalette();
   if (!c.body) return null;
