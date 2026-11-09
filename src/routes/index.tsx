@@ -61,6 +61,12 @@ function Home() {
           <h2 className="section-title mt-3">The Benefits of Powder Coating for Steel Products</h2>
           <p className="powder-copy mt-5">At New Yes Steel Furniture Udhyog, we pride ourselves on the quality and durability of our steel products. One of the key processes that ensure our steel almirahs and other furniture stand the test of time is powder coating. But what exactly is powder coating, and why do we use it? Let's dive into the benefits of this superior finishing technique.</p>
         </div>
+        <figure className="powder-figure">
+          <div className="powder-image-frame">
+            <img src="/images/powder-coating.jpe" alt="Powder-coated steel furniture finish" width={1151} height={768} loading="lazy" decoding="async" />
+          </div>
+          <figcaption>Illustrative powder-coating finish</figcaption>
+        </figure>
       </div>
       <div className="powder-definition">
         <h2 className="section-title">What is Powder Coating?</h2>
