@@ -4,8 +4,12 @@ export const PRODUCT_KEYS = [
   "wardrobe",
   "wardrobe2",
   "bed",
+  "bed1",
+  "matress1",
   "chair",
   "chair1",
+  "chair2",
+  "waitingchair1",
   "sofa",
   "sofa1",
   "sofa2",
@@ -16,6 +20,7 @@ export const PRODUCT_KEYS = [
   "trunk",
   "locker1",
   "rack1",
+  "safe1",
   "wardrobe1"
 ] as const;
 
@@ -35,6 +40,7 @@ export interface FurnitureProduct {
   availability: string | null;
   images: string[];
   modelUrl?: string | undefined;
+  modelScale?: number | undefined;
 }
 
 export const CATEGORIES = [
@@ -56,6 +62,7 @@ interface ProductOptions {
   availability?: string | null;
   images?: string[];
   modelUrl?: string | undefined;
+  modelScale?: number | undefined;
 }
 
 const product = (
@@ -79,6 +86,7 @@ const product = (
   availability: options.availability ?? null,
   images: options.images ?? [],
   modelUrl: options.modelUrl,
+  modelScale: options.modelScale,
 });
 
 export const PRODUCTS: FurnitureProduct[] = [
