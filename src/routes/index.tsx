@@ -54,6 +54,19 @@ function Home() {
         </div>
       </div>
     </section>
+    <section className="site-width site-section powder-section border-t border-border">
+      <div className="powder-hero">
+        <div className="powder-content">
+          <p className="about-kicker">Our finishing process</p>
+          <h2 className="section-title mt-3">The Benefits of Powder Coating for Steel Products</h2>
+          <p className="powder-copy mt-5">At New Yes Steel Furniture Udhyog, we pride ourselves on the quality and durability of our steel products. One of the key processes that ensure our steel almirahs and other furniture stand the test of time is powder coating. But what exactly is powder coating, and why do we use it? Let's dive into the benefits of this superior finishing technique.</p>
+        </div>
+      </div>
+      <div className="powder-definition">
+        <h2 className="section-title">What is Powder Coating?</h2>
+        <p className="powder-copy mt-5">Powder coating is a dry finishing process that involves applying a fine powder of resin and pigment to a metal surface. Unlike traditional liquid paint, powder coating is applied electrostatically and then cured under heat. This process creates a hard, smooth, and durable finish that is both protective and aesthetically pleasing.</p>
+      </div>
+    </section>
     <section id="contact" className="contact-section site-width site-section border-t border-border">
       <div className="contact-grid">
         <div className="contact-info">
