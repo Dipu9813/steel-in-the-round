@@ -92,12 +92,12 @@ function ViewerFallback({ kind }: { kind: ProductKey }) {
   const product = getProduct(kind);
   return <div className="flex h-full flex-col items-center justify-center gap-2">{product && <img src={product.images[0] ?? `/furniture/${kind}.jpg`} alt={`${product.name} — illustrative design`} className="max-h-[85%] w-auto object-contain" />}<p className="text-[10px] text-muted-foreground">3D view isn’t supported on this browser — showing a photo instead.</p></div>;
 }
-export function FurniturePreview({ kind, autoRotate = true, open = false, viewerRef }: { kind: ProductKey; autoRotate?: boolean; open?: boolean; viewerRef?: React.Ref<ViewerHandle> }) {
+export function FurniturePreview({ kind, autoRotate = true, open = false, zoomedOut = false, viewerRef }: { kind: ProductKey; autoRotate?: boolean; open?: boolean; zoomedOut?: boolean; viewerRef?: React.Ref<ViewerHandle> }) {
   const [state, setState] = useState<"pending" | "ok" | "unsupported">("pending");
   useEffect(() => setState(webglAvailable() ? "ok" : "unsupported"), []);
   if (state === "pending") return null;
   if (state === "unsupported") return <ViewerFallback kind={kind} />;
-  return <ViewerBoundary fallback={<ViewerFallback kind={kind} />}><Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} /></Suspense></ViewerBoundary>;
+  return <ViewerBoundary fallback={<ViewerFallback kind={kind} />}><Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} zoomedOut={zoomedOut} /></Suspense></ViewerBoundary>;
 }
 export function ProductPhoto({ product }: { product: FurnitureProduct }) {
   return <ImageFrame className="catalogue-photo"><img src={product.images[0] ?? `/furniture/${product.key}.jpg`} alt={`${product.name} by ${siteConfig.businessName}`} loading="lazy" width={800} height={700} className="catalogue-image" /></ImageFrame>;
@@ -114,7 +114,7 @@ export function Showroom({ hero = false, initial = "almirah1", onEnquire }: { he
   return <div className={hero ? "hero-viewer" : "product-viewer"}>
     <div className={`grid items-center gap-4 ${hero ? "" : "lg:grid-cols-[minmax(0,1fr)_280px]"}`}>
       <div className="relative min-w-0">
-        <div className="showroom-canvas" data-testid="furniture-viewer" data-product={key}><FurniturePreview key={key} kind={key} autoRotate={rotate} open={open} viewerRef={ref} /></div>
+        <div className="showroom-canvas" data-testid="furniture-viewer" data-product={key}><FurniturePreview key={key} kind={key} autoRotate={rotate} open={open} zoomedOut={!hero} viewerRef={ref} /></div>
         <div className="absolute bottom-3 left-0 right-0 flex items-center justify-end gap-3"><Button title={rotate ? "Pause rotation" : "Start rotation"} aria-label={rotate ? "Pause rotation" : "Start rotation"} variant="ghost" size="icon" aria-pressed={rotate} onClick={() => setRotate(!rotate)}>{rotate ? <Pause /> : <Play />}</Button></div>
       </div>
       {!hero && <div className="pb-2 lg:pl-5"><p className="eyebrow">{p.category}</p><h3 className="mt-3 text-2xl font-semibold">{p.name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{p.description}</p><dl className="mt-5 divide-y divide-border border-y border-border text-xs">{[["Dimensions", p.dimensions ?? "To be confirmed"], ["Finish", p.finish ?? "To be confirmed"], ["Price (NPR)", p.priceNpr === null ? "Please enquire" : `NPR ${p.priceNpr.toLocaleString()}`], ["Availability", p.availability ?? "Please enquire"]].map(([label, value]) => <div key={label} className="flex justify-between gap-3 py-3"><dt className="text-muted-foreground">{label}</dt><dd className="text-right">{value}</dd></div>)}</dl><Button asChild className="mt-5 w-full shadow-none"><Link to="/" hash="contact" onClick={onEnquire}>Enquire about this product <ArrowUpRight /></Link></Button></div>}
