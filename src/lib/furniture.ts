@@ -1,6 +1,8 @@
 export const PRODUCT_KEYS = [
   "almirah1",
   "almirah2",
+  "daraz4",
+  "daraz5",
   "bookesh",
   "wardrobe",
   "wardrobe2",
@@ -93,6 +95,8 @@ const product = (
 export const PRODUCTS: FurnitureProduct[] = [
   product("almirah1", "3-Piece Almirah", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah1.jpg"], modelUrl: "/models/almirah1.glb" }),
   product("almirah2", "Single Door Almirah", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah2.jpg"], modelUrl: "/models/almirah2.glb" }),
+  product("daraz4", "2-Piece Almirah", CATEGORIES[0] ?? "Storage", "A practical steel daraz storage cabinet for organizing household, office and commercial items.", { images: ["/furniture/Daraz4.jpg"], modelUrl: "/models/Daraz4.glb" }),
+  product("daraz5", "Male Female Daraz", CATEGORIES[0] ?? "Storage", "A practical steel daraz storage cabinet for organizing household, office and commercial items.", { images: ["/furniture/Daraz5.jpg"], modelUrl: "/models/Daraz5.glb" }),
   product("bookesh", "Book Kesh", CATEGORIES[6] ?? "Storage", "A practical steel storage bookcase for organizing books, documents and household items.", { images: ["/furniture/Bookesh.jpg"], modelUrl: "/models/Bookesh.glb" }),
   product("wardrobe2", "One Locker Office Alimarah", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/daraz1.jpg"], modelUrl: "/models/daraz1.glb" }),
   product("bed1", "Wooden Bed", CATEGORIES[2] ?? "Bedroom", "A steel bed design with a supported frame and mattress presentation for bedroom spaces.", { images: ["/furniture/bed1.jpg"], modelUrl: "/models/bed1.glb" }),
