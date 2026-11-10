@@ -79,15 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "New Yes Steel Furniture Udhyog" },
-      { name: "description", content: `Steel furniture manufacturer in Dhalkebar, Nepal. ${siteConfig.businessName} makes furniture for homes, offices and businesses.` },
       { name: "author", content: "New Yes Steel Furniture Udhyog" },
-      { property: "og:title", content: `Steel Furniture Manufacturer in Dhalkebar, Nepal | ${siteConfig.businessName}` },
-      { property: "og:description", content: `Steel furniture manufacturer in Dhalkebar, Nepal. ${siteConfig.businessName} makes furniture for homes, offices and businesses.` },
-      { property: "og:image", content: `${siteConfig.siteUrl}/new-yes-steel-logo.png` },
-      { property: "og:url", content: siteConfig.siteUrl },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {

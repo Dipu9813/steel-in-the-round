@@ -5,6 +5,6 @@ export const siteConfig = {
   email: "newyessteelfurnitureudhyog868@gmail.com",
   address: "M.N.P.A. Ward No. 6, Dhalkewar, Dhanusha, Nepal.",
   mapsUrl: "https://maps.app.goo.gl/7T6zVyuDT5pT1pAM7",
-  siteUrl: "https://newyessteelfurnitureudhyog.com",
+  siteUrl: "https://www.newyessteel.com.np",
   openingHours: "Sun–Fri, 9:00 AM – 6:00 PM",
 } as const;

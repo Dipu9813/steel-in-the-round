@@ -3,28 +3,77 @@ import { ArrowUpRight, ArrowRight, Clock3, Mail, MapPin, Navigation, Phone } fro
 import { Button } from "@/components/ui/button";
 import { SiteLayout, Catalogue, Showroom, SectionHeader, furnitureHead } from "@/components/FurnitureSite";
 import { siteConfig } from "@/config/site";
-export const Route = createFileRoute("/")({ head: () => furnitureHead("Steel Furniture Manufacturer in Dhalkebar, Nepal | New Yes Steel Furniture Udhyog", "New Yes Steel Furniture Udhyog manufactures steel furniture for homes, offices and businesses in Dhalkebar, Nepal."), component: Home });
+import { PRODUCTS } from "@/lib/furniture";
+
+const homepageTitle = "New Yes Steel Furniture Udhyog | Steel Furniture Nepal";
+const homepageDescription = "New Yes Steel Furniture Udhyog makes durable steel furniture in Dhalkebar, Nepal, including almirahs, wardrobes, beds, chairs, office tables and storage designs.";
+
+export const Route = createFileRoute("/")({
+  head: () => furnitureHead(homepageTitle, homepageDescription),
+  component: Home,
+});
+
 function Home() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "FurnitureStore",
-    name: siteConfig.businessName,
-    address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressLocality: "Dhalkebar", addressCountry: "NP" },
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
-    url: siteConfig.siteUrl,
-    openingHours: siteConfig.openingHours,
-    hasMap: siteConfig.mapsUrl,
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.siteUrl}/#organization`,
+        name: siteConfig.businessName,
+        url: siteConfig.siteUrl,
+        logo: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+      },
+      {
+        "@type": "FurnitureStore",
+        "@id": `${siteConfig.siteUrl}/#store`,
+        name: siteConfig.businessName,
+        url: siteConfig.siteUrl,
+        image: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressLocality: "Dhalkebar", addressCountry: "NP" },
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        openingHours: siteConfig.openingHours,
+        hasMap: siteConfig.mapsUrl,
+        parentOrganization: { "@id": `${siteConfig.siteUrl}/#organization` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${siteConfig.siteUrl}/#products`,
+        name: "New Yes Steel Furniture product collection",
+        itemListElement: PRODUCTS.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Product",
+            name: product.name,
+            description: product.description,
+            category: product.category,
+            image: product.images.map((image) => `${siteConfig.siteUrl}${image}`),
+            brand: { "@type": "Brand", name: siteConfig.businessName },
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+          { "@type": "ListItem", position: 2, name: "Products", item: `${siteConfig.siteUrl}/#products` },
+        ],
+      },
+    ],
   };
   return <SiteLayout>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     <section id="home" className="site-width hero-section pt-6 pb-8">
       <div className="hero-grid">
-        <div className="min-w-0"><p className="eyebrow">New Yes Steel Furniture Udhyog</p><h1 className="hero-title mt-4 font-semibold">Quality Furniture.<br /><span className="text-secondary">Designed for Everyday Living.</span></h1><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
+        <div className="min-w-0"><p className="eyebrow">Steel furniture manufacturer in Nepal</p><h1 className="hero-title mt-4 font-semibold">New Yes Steel Furniture Udhyog</h1><p className="mt-5 max-w-lg text-lg leading-8 text-muted-foreground">Quality steel furniture designed for everyday living, made in Dhalkebar for homes, offices and businesses.</p><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
         <div className="hero-model"><Showroom hero initial="almirah1" /></div>
       </div>
     </section>
-    <section id="products" className="site-width site-section border-t border-border"><SectionHeader title="The furniture collection" /><Catalogue /></section>
+    <section id="products" className="site-width site-section border-t border-border"><SectionHeader title="New Yes Steel Furniture collection" lead="Explore steel almirahs, wardrobes, beds, seating, office furniture and storage designs from our Nepal catalogue." /><Catalogue /></section>
     <section id="about" className="site-width site-section about-section border-t border-border">
       <div className="about-panel mt-5">
         <div className="about-grid">

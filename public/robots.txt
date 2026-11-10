@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://newyessteelfurnitureudhyog.com/sitemap.xml
+Sitemap: https://www.newyessteel.com.np/sitemap.xml
