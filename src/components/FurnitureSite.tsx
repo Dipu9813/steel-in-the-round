@@ -22,12 +22,13 @@ export function furnitureHead(title: string, description: string) {
       { property: "og:image", content: `${siteConfig.siteUrl}/new-yes-steel-logo.png` },
       { property: "og:url", content: canonicalUrl },
       { property: "og:type", content: "website" },
+      { name: "robots", content: "index, follow" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: pageTitle },
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `${siteConfig.siteUrl}/new-yes-steel-logo.png` },
     ],
-    links: [{ rel: "canonical", href: canonicalUrl }],
+    links: [{ rel: "canonical", href: siteConfig.siteUrl }],
   };
 }
 export function Brand() {

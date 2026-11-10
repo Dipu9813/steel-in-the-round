@@ -4,64 +4,63 @@ import { Button } from "@/components/ui/button";
 import { SiteLayout, Catalogue, Showroom, SectionHeader, furnitureHead } from "@/components/FurnitureSite";
 import { siteConfig } from "@/config/site";
 import { PRODUCTS } from "@/lib/furniture";
-
-const homepageTitle = "New Yes Steel Furniture Udhyog | Steel Furniture Nepal";
-const homepageDescription = "New Yes Steel Furniture Udhyog makes durable steel furniture in Dhalkebar, Nepal, including almirahs, wardrobes, beds, chairs, office tables and storage designs.";
-
-export const Route = createFileRoute("/")({
-  head: () => furnitureHead(homepageTitle, homepageDescription),
-  component: Home,
-});
-
+export const Route = createFileRoute("/")({ head: () => furnitureHead("Steel Furniture Manufacturer in Dhalkebar, Nepal | New Yes Steel Furniture Udhyog", "New Yes Steel Furniture Udhyog manufactures steel almirahs, wardrobes, beds, chairs, office furniture and storage products in Dhalkebar, Dhanusha, Nepal."), component: Home });
 function Home() {
+  const businessId = `${siteConfig.siteUrl}/#business`;
+  const productList = PRODUCTS.map((product) => ({
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: product.images.map((image) => `${siteConfig.siteUrl}${image}`),
+    category: product.category,
+    brand: { "@type": "Brand", name: siteConfig.businessName },
+    manufacturer: { "@id": businessId },
+    url: `${siteConfig.siteUrl}/#products`,
+  }));
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": ["FurnitureStore", "LocalBusiness"],
+        "@id": businessId,
+        name: siteConfig.businessName,
+        description: "Steel furniture manufacturer and showroom in Dhalkebar, Dhanusha, Nepal.",
+        image: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        logo: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressLocality: "Dhalkebar", addressRegion: "Dhanusha", addressCountry: "NP" },
+        geo: { "@type": "GeoCoordinates", latitude: siteConfig.latitude, longitude: siteConfig.longitude },
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        url: siteConfig.siteUrl,
+        sameAs: [siteConfig.mapsUrl],
+        openingHours: siteConfig.openingHours,
+        hasMap: siteConfig.mapsUrl,
+        areaServed: { "@type": "Country", name: "Nepal" },
+      },
       {
         "@type": "Organization",
         "@id": `${siteConfig.siteUrl}/#organization`,
         name: siteConfig.businessName,
         url: siteConfig.siteUrl,
         logo: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
-        telephone: siteConfig.phone,
-        email: siteConfig.email,
+        contactPoint: { "@type": "ContactPoint", telephone: siteConfig.phone, contactType: "sales", areaServed: "NP" },
       },
       {
-        "@type": "FurnitureStore",
-        "@id": `${siteConfig.siteUrl}/#store`,
+        "@type": "WebSite",
+        "@id": `${siteConfig.siteUrl}/#website`,
         name: siteConfig.businessName,
         url: siteConfig.siteUrl,
-        image: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
-        address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressLocality: "Dhalkebar", addressCountry: "NP" },
-        telephone: siteConfig.phone,
-        email: siteConfig.email,
-        openingHours: siteConfig.openingHours,
-        hasMap: siteConfig.mapsUrl,
-        parentOrganization: { "@id": `${siteConfig.siteUrl}/#organization` },
+        publisher: { "@id": `${siteConfig.siteUrl}/#organization` },
+        inLanguage: "en-NP",
       },
       {
         "@type": "ItemList",
-        "@id": `${siteConfig.siteUrl}/#products`,
-        name: "New Yes Steel Furniture product collection",
-        itemListElement: PRODUCTS.map((product, index) => ({
+        name: "Steel furniture collection",
+        itemListElement: productList.map((product, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          item: {
-            "@type": "Product",
-            name: product.name,
-            description: product.description,
-            category: product.category,
-            image: product.images.map((image) => `${siteConfig.siteUrl}${image}`),
-            brand: { "@type": "Brand", name: siteConfig.businessName },
-          },
+          item: product,
         })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-          { "@type": "ListItem", position: 2, name: "Products", item: `${siteConfig.siteUrl}/#products` },
-        ],
       },
     ],
   };
