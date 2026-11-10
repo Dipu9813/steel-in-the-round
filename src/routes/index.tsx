@@ -131,7 +131,7 @@ function Home() {
             <p className="contact-intro">Visit us to explore durable steel furniture, practical designs, and finishes made for everyday living.</p>
             <div className="contact-links">
               <div className="contact-item"><MapPin aria-hidden="true" /><p>{siteConfig.address}</p></div>
-              <div className="contact-item"><Clock3 aria-hidden="true" /><p>Sunday–Friday, 9:00 AM – 6:00 PM</p></div>
+              <div className="contact-item"><Clock3 aria-hidden="true" /><p>{siteConfig.openingHours}</p></div>
               <div className="contact-item"><Phone aria-hidden="true" /><a className="contact-link" href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></div>
               <div className="contact-item"><Mail aria-hidden="true" /><a className="contact-link break-all" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div>
             </div>
