@@ -112,6 +112,10 @@ export function ProductPhoto({ product }: { product: FurnitureProduct }) {
 export function ImageFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <span className={`image-frame ${className}`}>{children}</span>;
 }
+function ReferenceImages({ product }: { product: FurnitureProduct }) {
+  if (product.referenceImages.length === 0) return null;
+  return <div className="mt-4 grid gap-4 sm:grid-cols-2">{product.referenceImages.map((src) => <figure key={src} className="min-w-0"><ImageFrame className="block overflow-hidden"><img src={src} alt={`${product.name} product photo`} loading="lazy" decoding="async" className="h-auto max-h-96 w-full object-contain" /></ImageFrame><figcaption className="mt-2 text-center text-xs text-muted-foreground">Product photo</figcaption></figure>)}</div>;
+}
 export function Showroom({ hero = false, initial = "almirah1", onEnquire }: { hero?: boolean; initial?: ProductKey; onEnquire?: () => void }) {
   const [key, setKey] = useState<ProductKey>(initial), [rotate, setRotate] = useState(true), [open, setOpen] = useState(false);
   const ref = useRef<ViewerHandle>(null);
@@ -123,6 +127,7 @@ export function Showroom({ hero = false, initial = "almirah1", onEnquire }: { he
       <div className="relative min-w-0">
         <div className="showroom-canvas" data-testid="furniture-viewer" data-product={key}><FurniturePreview key={key} kind={key} autoRotate={rotate} open={open} zoomedOut={!hero} viewerRef={ref} /></div>
         <div className="absolute bottom-3 left-0 right-0 flex items-center justify-end gap-3"><Button title={rotate ? "Pause rotation" : "Start rotation"} aria-label={rotate ? "Pause rotation" : "Start rotation"} variant="ghost" size="icon" aria-pressed={rotate} onClick={() => setRotate(!rotate)}>{rotate ? <Pause /> : <Play />}</Button></div>
+        {!hero && <ReferenceImages product={p} />}
       </div>
       {!hero && <div className="pb-2 lg:pl-5"><p className="eyebrow">{p.category}</p><h3 className="mt-3 text-2xl font-semibold">{p.name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{p.description}</p><dl className="mt-5 divide-y divide-border border-y border-border text-xs">{[["Dimensions", p.dimensions ?? "To be confirmed"], ["Finish", p.finish ?? "To be confirmed"], ["Price (NPR)", p.priceNpr === null ? "Please enquire" : `NPR ${p.priceNpr.toLocaleString()}`], ["Availability", p.availability ?? "Please enquire"]].map(([label, value]) => <div key={label} className="flex justify-between gap-3 py-3"><dt className="text-muted-foreground">{label}</dt><dd className="text-right">{value}</dd></div>)}</dl><Button asChild className="mt-5 w-full shadow-none"><Link to="/" hash="contact" onClick={onEnquire}>Enquire about this product <ArrowUpRight /></Link></Button></div>}
     </div>
