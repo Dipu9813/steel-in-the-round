@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 const SteelViewer = lazy(() => import("@/components/SteelViewer"));
 export function furnitureHead(title: string, description: string) {
-  const pageTitle = title.includes(siteConfig.businessName) ? title : `${title} | ${siteConfig.businessName}`;
+  const pageTitle = title.includes(siteConfig.businessName) ? title : `${title} | ${siteConfig.businessName}`; 
   const canonicalUrl = siteConfig.siteUrl;
   return {
     meta: [
@@ -107,7 +107,7 @@ export function FurniturePreview({ kind, autoRotate = true, open = false, zoomed
   return <ViewerBoundary fallback={<ViewerFallback kind={kind} />}><Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} zoomedOut={zoomedOut} /></Suspense></ViewerBoundary>;
 }
 export function ProductPhoto({ product }: { product: FurnitureProduct }) {
-  return <ImageFrame className="catalogue-photo"><img src={product.images[0] ?? `/furniture/${product.key}.jpg`} alt={`${product.name} steel furniture by ${siteConfig.businessName} in Nepal`} loading="lazy" decoding="async" width={800} height={700} className="catalogue-image" /></ImageFrame>;
+  return <ImageFrame className="catalogue-photo"><img src={product.images[0] ?? `/furniture/${product.key}.jpg`} alt={`${product.name} steel furniture by ${siteConfig.businessName} in Nepal`} loading="lazy" decoding="async" width={800} height={600} className="catalogue-image" /></ImageFrame>;
 }
 export function ImageFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <span className={`image-frame ${className}`}>{children}</span>;
