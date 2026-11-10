@@ -42,6 +42,7 @@ export interface FurnitureProduct {
   priceNpr: number | null;
   availability: string | null;
   images: string[];
+  referenceImages: string[];
   modelUrl?: string | undefined;
   modelScale?: number | undefined;
 }
@@ -64,6 +65,7 @@ interface ProductOptions {
   priceNpr?: number | null;
   availability?: string | null;
   images?: string[];
+  referenceImages?: string[];
   modelUrl?: string | undefined;
   modelScale?: number | undefined;
 }
@@ -88,17 +90,18 @@ const product = (
   priceNpr: options.priceNpr ?? null,
   availability: options.availability ?? null,
   images: options.images ?? [],
+  referenceImages: options.referenceImages ?? [],
   modelUrl: options.modelUrl,
   modelScale: options.modelScale,
 });
 
 export const PRODUCTS: FurnitureProduct[] = [
-  product("almirah1", "3-Piece Almirah", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah1.jpg"], modelUrl: "/models/almirah1.glb" }),
-  product("almirah2", "Single Door Almirah", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah2.jpg"], modelUrl: "/models/almirah2.glb" }),
+  product("almirah1", "3-Piece Almirah", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah1.jpg"], referenceImages: ["/images/IMG_1259.JPG"], modelUrl: "/models/almirah1.glb" }),
+  product("almirah2", "Single Door Almirah", CATEGORIES[0] ?? "Storage", "A decorative steel almirah with twin arched mirror doors, built-in clock, open cubbies and pull-out drawers — designed for everyday storage of clothes, documents and household essentials.", { images: ["/furniture/almirah2.jpg"], referenceImages: ["/images/IMG_1260.JPG"], modelUrl: "/models/almirah2.glb" }),
   product("daraz4", "2-Piece Almirah", CATEGORIES[0] ?? "Storage", "A practical steel daraz storage cabinet for organizing household, office and commercial items.", { images: ["/furniture/Daraz4.jpg"], modelUrl: "/models/Daraz4.glb" }),
   product("daraz5", "Male Female Daraz", CATEGORIES[0] ?? "Storage", "A practical steel daraz storage cabinet for organizing household, office and commercial items.", { images: ["/furniture/Daraz5.jpg"], modelUrl: "/models/Daraz5.glb" }),
   product("bookesh", "Book Kesh", CATEGORIES[6] ?? "Storage", "A practical steel storage bookcase for organizing books, documents and household items.", { images: ["/furniture/Bookesh.jpg"], modelUrl: "/models/Bookesh.glb" }),
-  product("wardrobe2", "One Locker Office Alimarah", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/daraz1.jpg"], modelUrl: "/models/daraz1.glb" }),
+  product("wardrobe2", "One Locker Office Alimarah", CATEGORIES[1] ?? "Storage", "A multi-door storage design with separate hanging and shelving spaces for an organized bedroom.", { images: ["/furniture/daraz1.jpg"], referenceImages: ["/images/IMG_1261.JPG"], modelUrl: "/models/daraz1.glb" }),
   product("bed1", "Wooden Bed", CATEGORIES[2] ?? "Bedroom", "A steel bed design with a supported frame and mattress presentation for bedroom spaces.", { images: ["/furniture/bed1.jpg"], modelUrl: "/models/bed1.glb" }),
   product("matress1", " Mattress ", CATEGORIES[2] ?? "Bedroom", "A steel bed and mattress design for bedroom spaces.", { images: ["/furniture/matress1.jpg"], modelUrl: "/models/matress1.glb", modelScale: 0.45 }),
   product("chair1", "Boss Chair", CATEGORIES[3] ?? "Seating", "A straightforward seating design for household and commercial spaces, with a metal frame and supported backrest.", { images: ["/furniture/chair1.jpg"], modelUrl: "/models/chair1.glb" }),
