@@ -113,6 +113,7 @@ function GLTFModel({ url, modelScale = 1 }: { url: string; modelScale?: number }
 
 useGLTF.preload("/models/almirah1.glb");
 useGLTF.preload("/models/daraz1.glb");
+useGLTF.preload("/models/Bookesh.glb");
 
 
 export function FurnitureModel({ kind, open = false }: { kind: ProductKey; open?: boolean }) {
