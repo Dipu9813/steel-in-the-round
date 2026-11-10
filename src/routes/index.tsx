@@ -68,11 +68,11 @@ function Home() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     <section id="home" className="site-width hero-section pt-6 pb-8">
       <div className="hero-grid">
-        <div className="min-w-0"><p className="eyebrow">New Yes Steel Furniture Udhyog</p><h1 className="hero-title mt-4 font-semibold">Quality Furniture.<br /><span className="text-secondary">Designed for Everyday Living.</span></h1><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
+        <div className="min-w-0"><p className="eyebrow">Steel furniture manufacturer in Nepal</p><h1 className="hero-title mt-4 font-semibold">New Yes Steel Furniture Udhyog</h1><p className="mt-5 max-w-lg text-lg leading-8 text-muted-foreground">Quality steel furniture designed for everyday living, made in Dhalkebar for homes, offices and businesses.</p><div className="mt-6 flex flex-wrap items-center gap-4"><Button asChild className="shadow-none"><Link to="/" hash="products">Explore Products <ArrowRight /></Link></Button><Button asChild variant="outline" className="shadow-none"><Link to="/" hash="contact">Contact Us <ArrowUpRight /></Link></Button></div></div>
         <div className="hero-model"><Showroom hero initial="almirah1" /></div>
       </div>
     </section>
-    <section id="products" className="site-width site-section border-t border-border"><SectionHeader title="The furniture collection" /><Catalogue /></section>
+    <section id="products" className="site-width site-section border-t border-border"><SectionHeader title="New Yes Steel Furniture collection" lead="Explore steel almirahs, wardrobes, beds, seating, office furniture and storage designs from our Nepal catalogue." /><Catalogue /></section>
     <section id="about" className="site-width site-section about-section border-t border-border">
       <div className="about-panel mt-5">
         <div className="about-grid">
@@ -100,6 +100,25 @@ function Home() {
             <figcaption>Our showroom and factory outlet</figcaption>
           </figure>
         </div>
+      </div>
+    </section>
+    <section className="site-width site-section powder-section border-t border-border">
+      <div className="powder-hero">
+        <div className="powder-content">
+          <p className="about-kicker">Our finishing process</p>
+          <h2 className="section-title mt-3">The Benefits of Powder Coating for Steel Products</h2>
+          <p className="powder-copy mt-5">At New Yes Steel Furniture Udhyog, we pride ourselves on the quality and durability of our steel products. One of the key processes that ensure our steel almirahs and other furniture stand the test of time is powder coating. But what exactly is powder coating, and why do we use it? Let's dive into the benefits of this superior finishing technique.</p>
+        </div>
+        <figure className="powder-figure">
+          <div className="powder-image-frame">
+            <img src="/images/powder-coating.jpe" alt="Powder-coated steel furniture finish" width={1151} height={768} loading="lazy" decoding="async" />
+          </div>
+          <figcaption>Illustrative powder-coating finish</figcaption>
+        </figure>
+      </div>
+      <div className="powder-definition">
+        <h2 className="section-title">What is Powder Coating?</h2>
+        <p className="powder-copy mt-5">Powder coating is a dry finishing process that involves applying a fine powder of resin and pigment to a metal surface. Unlike traditional liquid paint, powder coating is applied electrostatically and then cured under heat. This process creates a hard, smooth, and durable finish that is both protective and aesthetically pleasing.</p>
       </div>
     </section>
     <section id="contact" className="contact-section site-width site-section border-t border-border">

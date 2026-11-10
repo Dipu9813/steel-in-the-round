@@ -12,7 +12,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { siteConfig } from "../config/site";
 
 function NotFoundComponent() {
   return (
@@ -79,8 +78,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "New Yes Steel Furniture Udhyog" },
-      { name: "description", content: `Steel furniture manufacturer in Dhalkebar, Nepal. ${siteConfig.businessName} makes furniture for homes, offices and businesses.` },
       { name: "author", content: "New Yes Steel Furniture Udhyog" },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: `Steel Furniture Manufacturer in Dhalkebar, Nepal | ${siteConfig.businessName}` },

@@ -11,17 +11,22 @@ import { buildWhatsAppLink } from "@/lib/whatsapp";
 const SteelViewer = lazy(() => import("@/components/SteelViewer"));
 export function furnitureHead(title: string, description: string) {
   const pageTitle = title.includes(siteConfig.businessName) ? title : `${title} | ${siteConfig.businessName}`;
+  const canonicalUrl = siteConfig.siteUrl;
   return {
     meta: [
       { title: pageTitle },
       { name: "description", content: description },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: pageTitle },
       { property: "og:description", content: description },
       { property: "og:image", content: `${siteConfig.siteUrl}/new-yes-steel-logo.png` },
-      { property: "og:url", content: siteConfig.siteUrl },
+      { property: "og:url", content: canonicalUrl },
       { property: "og:type", content: "website" },
       { name: "robots", content: "index, follow" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: pageTitle },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: `${siteConfig.siteUrl}/new-yes-steel-logo.png` },
     ],
     links: [{ rel: "canonical", href: siteConfig.siteUrl }],
   };
@@ -74,7 +79,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 }
 function FloatingContactActions({ message }: { message: string }) {
   return <div className="fixed bottom-4 right-4 z-40 flex items-center gap-2">
-    <a href={`tel:${siteConfig.phone}`} aria-label={`Call ${siteConfig.businessName}`} className="mobile-call inline-flex h-14 items-center justify-center rounded-full bg-secondary px-4 text-sm font-medium text-secondary-foreground shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{`Call`}</a>
+    <a href={`tel:${siteConfig.phone}`} aria-label={`Call ${siteConfig.businessName}`} className="mobile-call inline-flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"><Phone aria-hidden="true" size={23} /></a>
     <a href={buildWhatsAppLink(message)} target="_blank" rel="noopener noreferrer" aria-label={`Contact ${siteConfig.businessName} on WhatsApp`} className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"><svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true" fill="currentColor"><path d="M12 2a9.9 9.9 0 0 0-8.56 14.88L2 22l5.28-1.39A10 10 0 1 0 12 2Zm0 17.98a8 8 0 0 1-4.08-1.12l-.29-.17-3.13.82.84-3.05-.19-.31A8 8 0 1 1 12 19.98Zm4.39-5.99c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.91-1.18-.71-.63-1.19-1.4-1.33-1.64-.14-.24-.01-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z" /></svg></a>
   </div>;
 }
@@ -94,15 +99,15 @@ function ViewerFallback({ kind }: { kind: ProductKey }) {
   const product = getProduct(kind);
   return <div className="flex h-full flex-col items-center justify-center gap-2">{product && <img src={product.images[0] ?? `/furniture/${kind}.jpg`} alt={`${product.name} — illustrative design`} className="max-h-[85%] w-auto object-contain" />}<p className="text-[10px] text-muted-foreground">3D view isn’t supported on this browser — showing a photo instead.</p></div>;
 }
-export function FurniturePreview({ kind, autoRotate = true, open = false, viewerRef }: { kind: ProductKey; autoRotate?: boolean; open?: boolean; viewerRef?: React.Ref<ViewerHandle> }) {
+export function FurniturePreview({ kind, autoRotate = true, open = false, zoomedOut = false, viewerRef }: { kind: ProductKey; autoRotate?: boolean; open?: boolean; zoomedOut?: boolean; viewerRef?: React.Ref<ViewerHandle> }) {
   const [state, setState] = useState<"pending" | "ok" | "unsupported">("pending");
   useEffect(() => setState(webglAvailable() ? "ok" : "unsupported"), []);
   if (state === "pending") return null;
   if (state === "unsupported") return <ViewerFallback kind={kind} />;
-  return <ViewerBoundary fallback={<ViewerFallback kind={kind} />}><Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} /></Suspense></ViewerBoundary>;
+  return <ViewerBoundary fallback={<ViewerFallback kind={kind} />}><Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading furniture…</div>}><SteelViewer ref={viewerRef} kind={kind} autoRotate={autoRotate} open={open} zoomedOut={zoomedOut} /></Suspense></ViewerBoundary>;
 }
 export function ProductPhoto({ product }: { product: FurnitureProduct }) {
-  return <ImageFrame className="catalogue-photo"><img src={product.images[0] ?? `/furniture/${product.key}.jpg`} alt={`${product.name} by ${siteConfig.businessName}`} loading="lazy" width={800} height={700} className="catalogue-image" /></ImageFrame>;
+  return <ImageFrame className="catalogue-photo"><img src={product.images[0] ?? `/furniture/${product.key}.jpg`} alt={`${product.name} steel furniture by ${siteConfig.businessName} in Nepal`} loading="lazy" decoding="async" width={800} height={700} className="catalogue-image" /></ImageFrame>;
 }
 export function ImageFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <span className={`image-frame ${className}`}>{children}</span>;
@@ -116,7 +121,7 @@ export function Showroom({ hero = false, initial = "almirah1", onEnquire }: { he
   return <div className={hero ? "hero-viewer" : "product-viewer"}>
     <div className={`grid items-center gap-4 ${hero ? "" : "lg:grid-cols-[minmax(0,1fr)_280px]"}`}>
       <div className="relative min-w-0">
-        <div className="showroom-canvas" data-testid="furniture-viewer" data-product={key}><FurniturePreview key={key} kind={key} autoRotate={rotate} open={open} viewerRef={ref} /></div>
+        <div className="showroom-canvas" data-testid="furniture-viewer" data-product={key}><FurniturePreview key={key} kind={key} autoRotate={rotate} open={open} zoomedOut={!hero} viewerRef={ref} /></div>
         <div className="absolute bottom-3 left-0 right-0 flex items-center justify-end gap-3"><Button title={rotate ? "Pause rotation" : "Start rotation"} aria-label={rotate ? "Pause rotation" : "Start rotation"} variant="ghost" size="icon" aria-pressed={rotate} onClick={() => setRotate(!rotate)}>{rotate ? <Pause /> : <Play />}</Button></div>
       </div>
       {!hero && <div className="pb-2 lg:pl-5"><p className="eyebrow">{p.category}</p><h3 className="mt-3 text-2xl font-semibold">{p.name}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{p.description}</p><dl className="mt-5 divide-y divide-border border-y border-border text-xs">{[["Dimensions", p.dimensions ?? "To be confirmed"], ["Finish", p.finish ?? "To be confirmed"], ["Price (NPR)", p.priceNpr === null ? "Please enquire" : `NPR ${p.priceNpr.toLocaleString()}`], ["Availability", p.availability ?? "Please enquire"]].map(([label, value]) => <div key={label} className="flex justify-between gap-3 py-3"><dt className="text-muted-foreground">{label}</dt><dd className="text-right">{value}</dd></div>)}</dl><Button asChild className="mt-5 w-full shadow-none"><Link to="/" hash="contact" onClick={onEnquire}>Enquire about this product <ArrowUpRight /></Link></Button></div>}

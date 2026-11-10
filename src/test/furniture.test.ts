@@ -8,7 +8,7 @@ describe("Furniture catalogue rules", () => {
     for (const p of PRODUCTS) expect([p.dimensions, p.finish, p.priceNpr, p.availability]).toEqual([null, null, null, null]);
   });
   it("keeps product selection synchronized", () => {
-    expect(getProduct("bed")?.name).toBe("Steel Bed");
+    expect(getProduct("bed")?.name).toBe("Bed");
     expect(getProduct("desk")?.category).toBe("Office Tables & Desks");
   });
   it("places trunks and lockers in the storage category", () => {
