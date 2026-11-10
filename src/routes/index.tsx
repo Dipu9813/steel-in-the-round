@@ -3,18 +3,66 @@ import { ArrowUpRight, ArrowRight, Clock3, Mail, MapPin, Navigation, Phone } fro
 import { Button } from "@/components/ui/button";
 import { SiteLayout, Catalogue, Showroom, SectionHeader, furnitureHead } from "@/components/FurnitureSite";
 import { siteConfig } from "@/config/site";
-export const Route = createFileRoute("/")({ head: () => furnitureHead("Steel Furniture Manufacturer in Dhalkebar, Nepal | New Yes Steel Furniture Udhyog", "New Yes Steel Furniture Udhyog manufactures steel furniture for homes, offices and businesses in Dhalkebar, Nepal."), component: Home });
+import { PRODUCTS } from "@/lib/furniture";
+export const Route = createFileRoute("/")({ head: () => furnitureHead("Steel Furniture Manufacturer in Dhalkebar, Nepal | New Yes Steel Furniture Udhyog", "New Yes Steel Furniture Udhyog manufactures steel almirahs, wardrobes, beds, chairs, office furniture and storage products in Dhalkebar, Dhanusha, Nepal."), component: Home });
 function Home() {
+  const businessId = `${siteConfig.siteUrl}/#business`;
+  const productList = PRODUCTS.map((product) => ({
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: product.images.map((image) => `${siteConfig.siteUrl}${image}`),
+    category: product.category,
+    brand: { "@type": "Brand", name: siteConfig.businessName },
+    manufacturer: { "@id": businessId },
+    url: `${siteConfig.siteUrl}/#products`,
+  }));
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "FurnitureStore",
-    name: siteConfig.businessName,
-    address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressLocality: "Dhalkebar", addressCountry: "NP" },
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
-    url: siteConfig.siteUrl,
-    openingHours: siteConfig.openingHours,
-    hasMap: siteConfig.mapsUrl,
+    "@graph": [
+      {
+        "@type": ["FurnitureStore", "LocalBusiness"],
+        "@id": businessId,
+        name: siteConfig.businessName,
+        description: "Steel furniture manufacturer and showroom in Dhalkebar, Dhanusha, Nepal.",
+        image: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        logo: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressLocality: "Dhalkebar", addressRegion: "Dhanusha", addressCountry: "NP" },
+        geo: { "@type": "GeoCoordinates", latitude: siteConfig.latitude, longitude: siteConfig.longitude },
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        url: siteConfig.siteUrl,
+        sameAs: [siteConfig.mapsUrl],
+        openingHours: siteConfig.openingHours,
+        hasMap: siteConfig.mapsUrl,
+        areaServed: { "@type": "Country", name: "Nepal" },
+      },
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.siteUrl}/#organization`,
+        name: siteConfig.businessName,
+        url: siteConfig.siteUrl,
+        logo: `${siteConfig.siteUrl}/new-yes-steel-logo.png`,
+        contactPoint: { "@type": "ContactPoint", telephone: siteConfig.phone, contactType: "sales", areaServed: "NP" },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.siteUrl}/#website`,
+        name: siteConfig.businessName,
+        url: siteConfig.siteUrl,
+        publisher: { "@id": `${siteConfig.siteUrl}/#organization` },
+        inLanguage: "en-NP",
+      },
+      {
+        "@type": "ItemList",
+        name: "Steel furniture collection",
+        itemListElement: productList.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: product,
+        })),
+      },
+    ],
   };
   return <SiteLayout>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />

@@ -20,8 +20,10 @@ export function furnitureHead(title: string, description: string) {
       { property: "og:image", content: `${siteConfig.siteUrl}/new-yes-steel-logo.png` },
       { property: "og:url", content: siteConfig.siteUrl },
       { property: "og:type", content: "website" },
+      { name: "robots", content: "index, follow" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: siteConfig.siteUrl }],
   };
 }
 export function Brand() {
